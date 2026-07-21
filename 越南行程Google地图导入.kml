@@ -2,7 +2,7 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
 <Document>
   <name>越南9日行程 · Vietnam 9-Day Travel Guide</name>
-  <description><![CDATA[岘港 + 会安 + 胡志明 9天7晚旅行攻略 (7/25 - 8/2)<br/>航班: HX231 → HX548 → VN7141 → HO1328<br/>79个标记点: 景点/米其林餐厅/街头美食/租车店/酒店/机场]]></description>
+  <description><![CDATA[岘港 + 会安 + 胡志明 9天7晚旅行攻略 (7/25 - 8/2)<br/>航班: HX231 → HX548 → VN7141 → HO1328<br/>82个标记点: 景点/米其林餐厅/街头美食/购物超市/租车店/酒店/机场]]></description>
   <Style id="style_airport">
     <IconStyle>
       <color>ff0f6e56</color>
@@ -58,6 +58,16 @@
       <color>ffd4a017</color>
       <scale>1.2</scale>
       <Icon><href>https://maps.google.com/mapfiles/kml/dining.png</href></Icon>
+    </IconStyle>
+    <LabelStyle>
+      <scale>0.8</scale>
+    </LabelStyle>
+  </Style>
+  <Style id="style_shopping">
+    <IconStyle>
+      <color>ffb29108</color>
+      <scale>1.2</scale>
+      <Icon><href>https://maps.google.com/mapfiles/kml/shopping.png</href></Icon>
     </IconStyle>
     <LabelStyle>
       <scale>0.8</scale>
@@ -696,6 +706,28 @@
       <description><![CDATA[36 Triệu Quang Phục, Q5 · 1938年开业 西贡最老<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.752,106.670">在 Google Maps 中打开 →</a>]]></description>
       <styleUrl>#style_streetfood</styleUrl>
       <Point><coordinates>106.670,10.752,0</coordinates></Point>
+    </Placemark>
+  </Folder>
+  <Folder>
+    <name>🛒 购物超市 Supermarkets (3)</name>
+    <open>1</open>
+    <Placemark>
+      <name>MM Mega Market An Phu (批发超市)</name>
+      <description><![CDATA[Zone B, An Phu - An Khanh, Thu Duc City · 8:30-17:30<br/>越南版Costco，批发价采购伴手礼<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.789,106.753">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_shopping</styleUrl>
+      <Point><coordinates>106.753,10.789,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Vincom Center Dong Khoi (WinMart)</name>
+      <description><![CDATA[72 Le Thanh Ton, Ben Nghe, District 1 · 10:00-22:00<br/>距Saigon Hotel步行2分钟，日常补货<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7785,106.7015">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_shopping</styleUrl>
+      <Point><coordinates>106.7015,10.7785,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Co.opmart Cong Quynh</name>
+      <description><![CDATA[189C Cong Quynh, Nguyen Cu Trinh, District 1 · 8:00-22:00<br/>越南最大本土连锁超市，价格实惠<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.763,106.694">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_shopping</styleUrl>
+      <Point><coordinates>106.694,10.763,0</coordinates></Point>
     </Placemark>
   </Folder>
 </Document>
