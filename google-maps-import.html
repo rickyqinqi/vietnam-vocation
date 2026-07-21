@@ -41,16 +41,17 @@ body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
 <body>
 <div class="hero">
   <h1>🗺️ 导入 Google Maps 指南</h1>
-  <p>将越南9日行程全部66个地点一键导入你的 Google Maps</p>
+  <p>将越南9日行程全部78个地点一键导入你的 Google Maps</p>
 </div>
 
 <div class="container">
   <div class="card">
     <h2>📋 行程地点总览</h2>
     <div class="stats">
-      <div class="stat"><div class="stat-num">66</div><div class="stat-label">总标记点</div></div>
+      <div class="stat"><div class="stat-num">78</div><div class="stat-label">总标记点</div></div>
       <div class="stat"><div class="stat-num">26</div><div class="stat-label">行程景点</div></div>
       <div class="stat"><div class="stat-num">25</div><div class="stat-label">米其林餐厅</div></div>
+      <div class="stat"><div class="stat-num">12</div><div class="stat-label">街头美食</div></div>
       <div class="stat"><div class="stat-num">10</div><div class="stat-label">租车店</div></div>
       <div class="stat"><div class="stat-num">3</div><div class="stat-label">酒店</div></div>
       <div class="stat"><div class="stat-num">2</div><div class="stat-label">机场</div></div>
@@ -100,7 +101,7 @@ body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
       <div class="step-num">5</div>
       <div class="step-content">
         <h3>完成！🎉</h3>
-        <p>所有66个地点将按5个分类（机场/景点/酒店/餐厅/租车）自动分组显示在地图上</p>
+        <p>所有78个地点将按6个分类（机场/景点/酒店/餐厅/街头美食/租车）自动分组显示在地图上</p>
       </div>
     </div>
   </div>
@@ -129,7 +130,7 @@ body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei',
     <h2>🔄 备选方式：逐个保存</h2>
     <p>如果你只想保存部分地点，可以点击下方链接直接在 Google Maps 中打开并手动「保存」：</p>
     <div class="note">
-      <strong>📌 注意：</strong>此方式需要逐个点击保存，66个地点较为耗时。推荐使用上方的 KML 批量导入方式。
+      <strong>📌 注意：</strong>此方式需要逐个点击保存，78个地点较为耗时。推荐使用上方的 KML 批量导入方式。
     </div>
     <p style="margin-top:12px;">完整地点列表（点击在 Google Maps 打开）：</p>
     <div id="link-list" style="margin-top:12px;"></div>
@@ -175,6 +176,16 @@ var locations = [
   {cat:"🍽️",name:"Bếp Cuốn 🔵",lat:16.0620,lng:108.2380},
   {cat:"🍽️",name:"Little Faifo 🔵 (会安)",lat:15.8780,lng:108.3380},
   {cat:"🍽️",name:"Chau Kitchen 🔵 (会安)",lat:15.8785,lng:108.3300},
+  // Street Food - Hoi An
+  {cat:"🍜",name:"Cao Lầu Thanh (高楼面)",lat:15.8785,lng:108.3350},
+  {cat:"🍜",name:"Bánh mì Phượng (会安法棍)",lat:15.8800,lng:108.3320},
+  {cat:"🍜",name:"White Rose (白玫瑰)",lat:15.8765,lng:108.3340},
+  {cat:"🍜",name:"Cơm Gà Bà Buội (会安鸡饭)",lat:15.8788,lng:108.3335},
+  // Street Food - Da Nang
+  {cat:"🍜",name:"Bún Chả Cá Bà Phiến (鱼饼米粉)",lat:16.0700,lng:108.2180},
+  {cat:"🍜",name:"Bánh Tráng Cuốn Thịt Heo (米纸卷猪肉)",lat:16.0580,lng:108.2200},
+  {cat:"🍜",name:"Bánh Xèo Bà Dưỡng (越南煎饼)",lat:16.0610,lng:108.2060},
+  {cat:"🍜",name:"Chè Bà Dung (岘港甜品)",lat:16.0690,lng:108.2190},
   {cat:"🏍️",name:"Binh Minh Rental",lat:16.0630,lng:108.2480},
   {cat:"🏍️",name:"Huu Vy Rental",lat:16.0610,lng:108.2520},
   {cat:"🏍️",name:"Song Han Rental",lat:16.0620,lng:108.2140},
@@ -210,6 +221,12 @@ var locations = [
   {cat:"🍽️",name:"Bò Kho Gánh 🔵",lat:10.7620,lng:106.6700},
   {cat:"🍽️",name:"Mặn Mòi 🔵",lat:10.7700,lng:106.6930},
   {cat:"🍽️",name:"The Monkey Gallery 🔵",lat:10.7730,lng:106.7035},
+  // Street Food - Ho Chi Minh
+  {cat:"🍜",name:"Bánh Mì Huỳnh Hoa (西贡法棍)",lat:10.7690,lng:106.6920},
+  {cat:"🍜",name:"Phở Hòa Pasteur (越南河粉)",lat:10.7550,lng:106.6940},
+  {cat:"🍜",name:"Bún Bò Huế Đông Ba (顺化牛肉粉)",lat:10.7750,lng:106.6950},
+  {cat:"🍜",name:"Cà Phê Cheo Leo (老字号咖啡)",lat:10.7520,lng:106.6700},
+  {cat:"🍜",name:"Chè Hiển Khánh (西贡甜品)",lat:10.7510,lng:106.6680},
 ];
 var list = document.getElementById('link-list');
 locations.forEach(function(loc) {

@@ -2,7 +2,7 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
 <Document>
   <name>越南9日行程 · Vietnam 9-Day Travel Guide</name>
-  <description><![CDATA[岘港 + 会安 + 胡志明 9天7晚旅行攻略 (7/25 - 8/2)<br/>航班: HX231 → HX548 → VN7141 → HO1328<br/>66个标记点: 景点/米其林餐厅/租车店/酒店/机场]]></description>
+  <description><![CDATA[岘港 + 会安 + 胡志明 9天7晚旅行攻略 (7/25 - 8/2)<br/>航班: HX231 → HX548 → VN7141 → HO1328<br/>78个标记点: 景点/米其林餐厅/街头美食/租车店/酒店/机场]]></description>
   <Style id="style_airport">
     <IconStyle>
       <color>ff0f6e56</color>
@@ -48,6 +48,16 @@
       <color>ff2563eb</color>
       <scale>1.2</scale>
       <Icon><href>https://maps.google.com/mapfiles/kml/cabs.png</href></Icon>
+    </IconStyle>
+    <LabelStyle>
+      <scale>0.8</scale>
+    </LabelStyle>
+  </Style>
+  <Style id="style_streetfood">
+    <IconStyle>
+      <color>ffd4a017</color>
+      <scale>1.2</scale>
+      <Icon><href>https://maps.google.com/mapfiles/kml/dining.png</href></Icon>
     </IconStyle>
     <LabelStyle>
       <scale>0.8</scale>
@@ -599,6 +609,85 @@
       <Point>
         <coordinates>108.345,15.871,0</coordinates>
       </Point>
+    </Placemark>
+  </Folder>
+  <Folder>
+    <name>🍜 街头美食 Street Food (12)</name>
+    <open>1</open>
+    <!-- Hoi An -->
+    <Placemark>
+      <name>Cao Lầu Thanh (高楼面)</name>
+      <description><![CDATA[26 Thái Phiên, Hội An · 必吃! 会安独有<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.8785,108.335">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>108.335,15.8785,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bánh mì Phượng (会安法棍)</name>
+      <description><![CDATA[2B Phan Châu Trinh, Hội An · Anthony Bourdain 推荐<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.880,108.332">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>108.332,15.880,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>White Rose Restaurant (白玫瑰)</name>
+      <description><![CDATA[533 Hai Bà Trưng, Hội An · 会安原创<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.8765,108.334">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>108.334,15.8765,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Cơm Gà Bà Buội (会安鸡饭)</name>
+      <description><![CDATA[22 Phan Chu Trinh, Hội An<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.8788,108.3335">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>108.3335,15.8788,0</coordinates></Point>
+    </Placemark>
+    <!-- Da Nang -->
+    <Placemark>
+      <name>Bún Chả Cá Bà Phiến (鱼饼米粉)</name>
+      <description><![CDATA[3 Hải Phòng, Hải Châu, Đà Nẵng · 岘港头牌<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.070,108.218">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>108.218,16.070,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bánh Tráng Cuốn Thịt Heo (米纸卷猪肉)</name>
+      <description><![CDATA[4 Lê Duẩn, Thanh Khê, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.058,108.220">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>108.220,16.058,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bánh Xèo Bà Dưỡng (越南煎饼)</name>
+      <description><![CDATA[H280+4 Đống Đa, Hải Châu, Đà Nẵng · 60年老店<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.061,108.206">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>108.206,16.061,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Chè Bà Dung (岘港甜品)</name>
+      <description><![CDATA[86 Hải Phòng, Hải Châu, Đà Nẵng · 30年老店<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.069,108.219">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>108.219,16.069,0</coordinates></Point>
+    </Placemark>
+    <!-- Ho Chi Minh -->
+    <Placemark>
+      <name>Bánh Mì Huỳnh Hoa (西贡法棍)</name>
+      <description><![CDATA[26 Lê Thị Riêng, Q1 · 全城最有名 16:00-23:00<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.769,106.692">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>106.692,10.769,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Phở Hòa Pasteur (越南河粉)</name>
+      <description><![CDATA[260C Pasteur, Q3 · 1968年老店 5:30-次日1:00<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.755,106.694">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>106.694,10.755,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Bún Bò Huế Đông Ba (顺化牛肉粉)</name>
+      <description><![CDATA[110A Nguyễn Du, Q1 · 微辣<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.775,106.695">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>106.695,10.775,0</coordinates></Point>
+    </Placemark>
+    <Placemark>
+      <name>Cà Phê Cheo Leo (老字号咖啡)</name>
+      <description><![CDATA[36 Triệu Quang Phục, Q5 · 1938年开业 西贡最老<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.752,106.670">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_streetfood</styleUrl>
+      <Point><coordinates>106.670,10.752,0</coordinates></Point>
     </Placemark>
   </Folder>
 </Document>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>越南岘港+会安+胡志明 9日行程攻略 v9 · 7月25日-8月2日</title>
+<title>越南岘港+会安+胡志明 9日行程攻略 v10 · 7月25日-8月2日</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
@@ -169,6 +169,53 @@
   .michelin-info .meta { font-size: 12px; color: #999; margin-bottom: 4px; }
   .michelin-info p { font-size: 13px; color: #666; }
   .michelin-price { text-align: right; font-size: 13px; font-weight: 700; color: #0f6e56; white-space: nowrap; }
+
+  /* Local food guide */
+  .food-region {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .food-region h3 {
+    font-size: 18px; font-weight: 700; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .food-region .region-desc {
+    font-size: 13px; color: #999; margin-bottom: 20px;
+  }
+  .food-item {
+    display: flex; gap: 14px; padding: 16px 0;
+    border-bottom: 1px solid #f0ede5;
+  }
+  .food-item:last-child { border-bottom: none; }
+  .food-item .food-emoji {
+    font-size: 28px; line-height: 1; flex-shrink: 0;
+    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    background: #fef6e0; border-radius: 10px;
+  }
+  .food-item .food-info { flex: 1; }
+  .food-item .food-info h4 {
+    font-size: 15px; font-weight: 700; margin-bottom: 2px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  }
+  .food-item .food-info .food-vn {
+    font-size: 12px; color: #999; font-weight: 400; font-style: italic;
+  }
+  .food-item .food-info .food-where {
+    font-size: 12px; color: #888; margin-top: 2px;
+  }
+  .food-item .food-info p {
+    font-size: 13px; color: #555; margin-top: 4px;
+  }
+  .food-tag {
+    display: inline-block; font-size: 11px; padding: 1px 7px;
+    border-radius: 4px; font-weight: 600;
+  }
+  .food-tag.must { background: #fcebed; color: #a32d2d; }
+  .food-tag.cheap { background: #eaf3de; color: #3b6d11; }
+  .food-tag.spicy { background: #fff0e6; color: #c4520f; }
 
   /* Hotel card */
   .hotel-card {
@@ -459,6 +506,7 @@
       <span class="tag">7/30 VN7141 岘港→胡志明</span>
       <span class="tag">8/2 HO1328 凌晨飞浦东</span>
       <span class="tag">15+家米其林餐厅</span>
+      <span class="tag">三城街头美食指南</span>
       <span class="tag">海云岭/灵姑湾/湄公河</span>
     </div>
   </div>
@@ -1558,6 +1606,219 @@
     </div>
 
   </div>
+
+  <!-- ===== Local Food Guide ===== -->
+  <div class="section">
+    <h2><span class="icon">🍜</span> 当地美食推荐 · 三城街头味道</h2>
+    <p class="sec-desc">不走米其林也能吃懂越南 — 每座城市的灵魂味道，藏在街头巷尾</p>
+
+    <!-- Hoi An -->
+    <div class="food-region">
+      <h3>🏮 会安 · 古城美食</h3>
+      <p class="region-desc">会安是越南美食密度最高的城市之一，融合中式、日式与越南本土风味，独有5道"会安限定"名菜</p>
+
+      <div class="food-item">
+        <div class="food-emoji">🍜</div>
+        <div class="food-info">
+          <h4>高楼面 <span class="food-vn">Cao Lầu</span> <span class="food-tag must">必吃</span></h4>
+          <div class="food-where">📍 推荐店：Cao Lầu Thanh (26 Thái Phiên) · 💰 2-3万盾 (6-9元)</div>
+          <p>会安独有！粗韧米粉配叉烧、脆猪皮、新鲜香草，浇上少量浓汤。正宗做法必须用会安巴檬古井水制作面条，出了会安就做不出这个味道。只在会安吃得到。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🍝</div>
+        <div class="food-info">
+          <h4>广南面 <span class="food-vn">Mì Quảng</span> <span class="food-tag must">必吃</span></h4>
+          <div class="food-where">📍 推荐店：Mì Quảng 1A (1A Hai Bà Trưng) · 💰 2.5-4万盾 (7-12元)</div>
+          <p>广南省招牌！黄色扁米粉配虾、猪肉、鹌鹑蛋、花生碎和烤米饼，浇少量姜黄汤底。吃法像拌面不像汤面。会安和岘港都吃得到，但会安的更传统。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🥖</div>
+        <div class="food-info">
+          <h4>会安法棍 <span class="food-vn">Bánh mì Phượng</span> <span class="food-tag must">必吃</span></h4>
+          <div class="food-where">📍 Bánh mì Phượng (2B Phan Châu Trinh) · 💰 2-3万盾 (6-9元) · 7:00-21:00</div>
+          <p>被 Anthony Bourdain 亲自称赞的"全世界最好法棍"！外脆内软的越南法棍夹猪肝酱、冷切肉、烤肉、香菜、辣椒和秘制酱油。排队10-20分钟很正常，值得。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🥟</div>
+        <div class="food-info">
+          <h4>白玫瑰 <span class="food-vn">Bánh Bao Bánh Vạc</span> <span class="food-tag cheap">平价</span></h4>
+          <div class="food-where">📍 推荐店：White Rose Restaurant (533 Hai Bà Trưng) · 💰 3-5万盾 (9-15元)</div>
+          <p>会安原创！半透明米皮包裹虾肉馅，捏成玫瑰花形状，淋蒜油和甜酸鱼露。整份只有8-10个，一口一个。据说是中国馄饨的越南变体。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🍗</div>
+        <div class="food-info">
+          <h4>会安鸡饭 <span class="food-vn">Cơm Gà Hội An</span></h4>
+          <div class="food-where">📍 推荐店：Cơm Gà Bà Buội (22 Phan Chu Trinh) · 💰 3-4万盾 (9-12元)</div>
+          <p>黄姜鸡汤煮饭，手撕鸡肉丝配洋葱、薄荷、香菜，淋会安特制鱼露酱汁。看似简单但层次丰富，是会安人的日常午餐。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🥣</div>
+        <div class="food-info">
+          <h4>会安馄饨 <span class="food-vn">Hoành Thánh</span></h4>
+          <div class="food-where">📍 推荐店：Miếng Cơm Sop (various stalls) · 💰 2-3万盾 (6-9元)</div>
+          <p>华人移民带来的馄饨，会安版皮更薄、馅料用虾肉和猪肉混合，汤底清甜。炸馄饨配酸萝卜是经典吃法，街边小摊比餐厅好吃。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Da Nang -->
+    <div class="food-region">
+      <h3>🌊 岘港 · 海鲜与米粉之城</h3>
+      <p class="region-desc">岘港靠山面海，海鲜新鲜便宜，本地米粉独具特色，是吃货的天堂</p>
+
+      <div class="food-item">
+        <div class="food-emoji">🐟</div>
+        <div class="food-info">
+          <h4>鱼饼米粉 <span class="food-vn">Bún Chả Cá Đà Nẵng</span> <span class="food-tag must">必吃</span></h4>
+          <div class="food-where">📍 推荐店：Bún Chả Cá Bà Phiến (3 Hải Phòng) · 💰 2-3万盾 (6-9元) · 6:00-20:00</div>
+          <p>岘港头牌！鱼浆手打鱼饼切片，配粗米粉、番茄、菠萝和空心菜，汤底鲜甜微酸。早市摊位味道最正，一碗才6块钱。本地人当早餐吃。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🦐</div>
+        <div class="food-info">
+          <h4>米纸卷猪肉 <span class="food-vn">Bánh Tráng Cuốn Thịt Heo</span> <span class="food-tag must">必吃</span></h4>
+          <div class="food-where">📍 推荐店：Bánh Tráng Cuốn Thịt Heo (4 Lê Duẩn) · 💰 5-8万盾 (15-25元)</div>
+          <p>岘港特色！现煮五花肉切片，配虾仁、米粉、新鲜生菜和各种香草，用米纸自己卷，蘸发酵虾酱或花生酱。一盘够2人吃，互动性强。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🦀</div>
+        <div class="food-info">
+          <h4>海鲜大排档 <span class="food-vn">Hải Sản</span></h4>
+          <div class="food-where">📍 推荐区：美溪海滩海鲜街 (My Khe Beach) · 💰 15-30万盾 (45-90元/人)</div>
+          <p>美溪海滩沿线大排档，现挑现做。推荐：蒜蓉烤龙虾、椒盐皮皮虾、葱姜螃蟹、烤海螺。价格透明按公斤算，比胡志明便宜30%。傍晚边看海边吃最爽。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🥞</div>
+        <div class="food-info">
+          <h4>越南煎饼 <span class="food-vn">Bánh Xèo</span></h4>
+          <div class="food-where">📍 推荐店：Bánh Xèo Bà Dưỡng (H280+4 Đống Đa) · 💰 3-5万盾 (9-15元)</div>
+          <p>米浆煎成金黄脆饼，夹豆芽、猪肉、虾，用生菜叶包着蘸鱼露吃。岘港版的饼更薄更脆，Bà Dưụng是本地60年老店。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🍜</div>
+        <div class="food-info">
+          <h4>岘港猪肉米粉 <span class="food-vn">Bún Thịt Nướng</span> <span class="food-tag cheap">平价</span></h4>
+          <div class="food-where">📍 街边摊随处可见 · 💰 1.5-2.5万盾 (5-8元)</div>
+          <p>炭烤猪肉串配冷米粉、花生碎、香草和鱼露，拌着吃。岘港版偏甜，烤肉用蜂蜜和柠檬草腌制。随便找个街边推车都不会踩雷。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🥤</div>
+        <div class="food-info">
+          <h4>岘港甜品 <span class="food-vn">Chè</span> <span class="food-tag cheap">平价</span></h4>
+          <div class="food-where">📍 推荐店：Chè Bà Dung (86 Hải Phòng) · 💰 1-2万盾 (3-6元)</div>
+          <p>越南式糖水甜品，种类超多：绿豆沙、椰奶芋头、姜汁汤圆、水果冰。夏天加碎冰，冬天热吃。Bà Dung开了30年，本地人从小吃到大。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ho Chi Minh -->
+    <div class="food-region">
+      <h3>🏙️ 胡志明 · 南方味觉首都</h3>
+      <p class="region-desc">南方饮食大胆浓郁、甜辣交织，华越法三大文化碰撞出独一无二的西贡味道</p>
+
+      <div class="food-item">
+        <div class="food-emoji">🥖</div>
+        <div class="food-info">
+          <h4>西贡法棍 <span class="food-vn">Bánh Mì</span> <span class="food-tag must">必吃</span></h4>
+          <div class="food-where">📍 推荐店：Bánh Mì Huỳnh Hoa (26 Lê Thị Riêng) · 💰 3.5-5万盾 (10-15元) · 16:00-23:00</div>
+          <p>胡志明是越南法棍发源地！Huỳnh Hoa 是全城最有名的法棍店，夹满冷切肉、肉酱、香菜、腌萝卜，一个管饱。晚上才开门，排队30分钟起。范五老街深夜首选。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🍚</div>
+        <div class="food-info">
+          <h4>碎米饭 <span class="food-vn">Cơm Tấm</span> <span class="food-tag must">必吃</span></h4>
+          <div class="food-where">📍 推荐店：Cơm Tấm Ba Ghiền (84 Đặng Văn Ngữ) · 💰 3-5万盾 (9-15元) · 6:00-21:00</div>
+          <p>南方灵魂！碎米（制作过程中碎掉的米粒）配烤猪排、猪皮丝、煎蛋、春卷，浇甜酸鱼露。Ba Ghiền的烤肉排是西贡天花板，每天排队到门外。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🍲</div>
+        <div class="food-info">
+          <h4>越南河粉 <span class="food-vn">Phở</span> <span class="food-tag must">必吃</span></h4>
+          <div class="food-where">📍 推荐店：Phở Hòa Pasteur (260C Pasteur, Q3) · 💰 4-6万盾 (12-18元) · 5:30-次日1:00</div>
+          <p>南方版河粉汤底偏甜，配大量豆芽、九层塔、薄荷和柠檬，吃前自己加鱼露和辣椒酱。Phở Hòa 1968年开业，50多年老店，24小时都有人吃。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🍤</div>
+        <div class="food-info">
+          <h4>柬埔寨式米粉 <span class="food-vn">Hủ Tiếu Nam Vang</span></h4>
+          <div class="food-where">📍 推荐店：Hủ Tiếu Nam Vanh Thành Đạt (381 Nguyễn Trãi) · 💰 3-5万盾 (9-15元)</div>
+          <p>源自柬埔寨金边的米粉，南方特色。汤底用猪骨和虾熬制，配虾仁、猪肉片、肉丸、鹌鹑蛋和炸蒜末。比河粉更浓郁鲜甜，是西贡人的早餐标配。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🌶️</div>
+        <div class="food-info">
+          <h4>顺化牛肉粉 <span class="food-vn">Bún Bò Huế</span> <span class="food-tag spicy">微辣</span></h4>
+          <div class="food-where">📍 推荐店：Bún Bò Huế Đông Ba (110A Nguyễn Du) · 💰 3-5万盾 (9-15元)</div>
+          <p>中部顺化传来的辣味牛肉米粉，汤底用柠檬草和辣椒熬制，微辣鲜香。配牛腩、猪脚和血豆腐。比南方河粉味道更浓烈，冬天吃一碗全身暖。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🥞</div>
+        <div class="food-info">
+          <h4>南方煎饼 <span class="food-vn">Bánh Xèo Miền Nam</span></h4>
+          <div class="food-where">📍 推荐店：Bánh Xèo 46A (46A Đinh Công Tráng, Q1) · 💰 4-6万盾 (12-18元)</div>
+          <p>南方版煎饼比北方大两倍，馅料更丰富：虾、猪肉、蘑菇、豆芽。用大芥菜叶包着蘸酸甜鱼露。46A 是西贡最有名的煎饼店，份量十足。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">☕</div>
+        <div class="food-info">
+          <h4>冰牛奶咖啡 <span class="food-vn">Cà Phê Sữa Đá</span> <span class="food-tag must">必喝</span></h4>
+          <div class="food-where">📍 推荐店：Cà Phê Cộng (various) / Cheo Leo (36 Triệu Quang Phục) · 💰 1.5-3万盾 (5-9元)</div>
+          <p>越南滴漏咖啡加炼乳加冰，浓郁甜滑，一杯能坐一下午。Cheo Leo 是西贡最老的咖啡店（1938年），三代人只做一种咖啡。坐在小板凳上看街景就是西贡日常。</p>
+        </div>
+      </div>
+
+      <div class="food-item">
+        <div class="food-emoji">🍮</div>
+        <div class="food-info">
+          <h4>西贡甜品 <span class="food-vn">Chè</span> <span class="food-tag cheap">平价</span></h4>
+          <div class="food-where">📍 推荐店：Chè Hiển Khánh (118 Hải Thượng Lãn Ông, Q5) · 💰 1-2.5万盾 (3-8元)</div>
+          <p>堤岸华人区的百年甜品老店，13种糖水每天现做：椰奶西米、芋头糕、莲子百合、绿豆沙。华人移民带来的广式糖水越南化，比岘港版更精致。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box tip" style="margin-top: 20px;">
+      <span class="label">觅食小贴士</span>
+      <strong>越脏越好吃</strong>：街边塑料小板凳摊位往往比装修好的餐厅更正宗，排队越长的越靠谱。<br>
+      <strong>价格参考</strong>：一碗米粉6-15元，一份法棍6-10元，海鲜大排档人均50-90元，咖啡5-9元。带足现金，街边不刷卡。<br>
+      <strong>卫生</strong>：选客人翻台快的店，食材周转快更新鲜。喝瓶装水，不喝自来水。生蔬菜量力而行。<br>
+      <strong>点餐</strong>：看不懂菜单就看邻桌吃什么指一指，越南人都很热情。学会说" ngon quá"（太好吃）会让老板开心。
+    </div>
+  </div>
+
   <div class="section">
     <h2><span class="icon">🌿</span> 自然美景精选</h2>
     <p class="sec-desc">本次行程覆盖的全部自然景观一览</p>
@@ -1681,22 +1942,6 @@
       </div>
     </div>
 
-    <div class="hotel-card">
-      <span class="hotel-tag" style="background:#eaf3de;color:#3b6d11;">备选中档</span>
-      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">步行4分钟</span>
-      <div class="hotel-name">Avora Hotel</div>
-      <div class="hotel-meta">170 Bạch Đằng St · 评分4.6 · 约 300-400元/晚</div>
-      <div class="hotel-desc">屋顶露台可看龙桥喷火。距韩市场4分钟，距粉红教堂2分钟。33间房，2024年装修。</div>
-    </div>
-
-    <div class="hotel-card">
-      <span class="hotel-tag" style="background:#faeeda;color:#854f0b;">备选平价</span>
-      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">步行2分钟</span>
-      <div class="hotel-name">Sanouva Danang Hotel</div>
-      <div class="hotel-meta">距韩市场约200米 · 评分4.5 · 约 250-350元/晚</div>
-      <div class="hotel-desc">市区精品酒店，干净舒适，服务好。步行可达韩市场、粉红教堂、龙桥。性价比高。</div>
-    </div>
-
     <h3 style="font-size: 17px; font-weight: 700; margin: 28px 0 12px; color: #185fa5;">🏨 胡志明 · Saigon Hotel（2晚）</h3>
 
     <div class="hotel-card" style="border-left: 4px solid #185fa5;">
@@ -1710,110 +1955,12 @@
       </div>
     </div>
 
-    <div class="hotel-card">
-      <span class="hotel-tag" style="background:#fcebed;color:#a32d2d;">备选五星</span>
-      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">同一条街</span>
-      <div class="hotel-name">Sheraton Saigon Grand Opera Hotel ⭐5</div>
-      <div class="hotel-meta">📍 88 Dong Khoi St, District 1 · 评分4.2 · 约 800-1200元/晚</div>
-      <div class="hotel-desc">同起街上五星级，紧邻歌剧院。484间房，室外泳池、全套SPA、5间餐厅酒吧。万豪旗下，服务稳定。</div>
-    </div>
-
     <div class="highlight-box tip">
       <span class="label">住宿位置说明</span>
       <strong>会安 Little Residence</strong>：35 Đào Duy Từ，葡萄牙式精品设计酒店，步行几分钟到日本桥和夜市，有SPA和泳池。<br>
       <strong>岘港 Wink Danang Centre</strong>：市区心脏位置，粉红教堂180米/韩市场400米/龙桥650米，去美溪海滩打车15分钟。兼顾便利与美食探索。<br>
       <strong>胡志明 Saigon Hotel</strong>：同起街8号，District 1 绝对中心。法式殖民风情，步行可达全部主要景点。夜生活区范五老街打车5分钟。
     </div>
-  </div>
-
-  <!-- ===== Budget ===== -->
-  <div class="section">
-    <h2><span class="icon">💰</span> 预算估算（人均）</h2>
-    <p class="sec-desc">9天7晚 · 7/25 HX231/HX548 上海→香港转机→岘港 · 7/30 VN7141 岘港→胡志明 · 8/2 HO1328 胡志明→浦东</p>
-
-    <table class="budget-table">
-      <thead>
-        <tr>
-          <th>项目</th>
-          <th>明细</th>
-          <th>金额（元）</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>去程机票</td>
-          <td>7/25 HX231 PVG→HKG + HX548 HKG→DAD（香港航空）</td>
-          <td>1,500 - 2,500</td>
-        </tr>
-        <tr>
-          <td>越南国内机票</td>
-          <td>7/30 VN7141 DAD→SGN（越南航空）</td>
-          <td>200 - 400</td>
-        </tr>
-        <tr>
-          <td>返程机票</td>
-          <td>8/2 HO1328 SGN→PVG（吉祥航空，红眼航班）</td>
-          <td>600 - 1,200</td>
-        </tr>
-        <tr>
-          <td>香港转机休息厅</td>
-          <td>环亚 Plaza Premium（Klook 预订约 280 港币）</td>
-          <td>250 - 350</td>
-        </tr>
-        <tr>
-          <td>签证</td>
-          <td>越南电子签 e-Visa</td>
-          <td>180</td>
-        </tr>
-        <tr>
-          <td>住宿（7晚）</td>
-          <td>Little Residence 2晚 + Wink Danang Centre 3晚 + Saigon Hotel 2晚</td>
-          <td>1,700 - 3,400</td>
-        </tr>
-        <tr>
-          <td>餐饮</td>
-          <td>9天（街头小吃+米其林餐厅+海鲜+游船晚餐+fine dining）</td>
-          <td>1,000 - 2,200</td>
-        </tr>
-        <tr>
-          <td>巴拿山套票</td>
-          <td>缆车+金桥+法国村+自助午餐</td>
-          <td>250 - 280</td>
-        </tr>
-        <tr>
-          <td>交通</td>
-          <td>Grab打车+包车（海云岭）+机场接送</td>
-          <td>400 - 700</td>
-        </tr>
-        <tr>
-          <td>摩托租车</td>
-          <td>3-4天 × 30-45元/天 + 油费</td>
-          <td>100 - 200</td>
-        </tr>
-        <tr>
-          <td>胡志明体验</td>
-          <td>湄公河三角洲一日游 + 古芝半日游 + 西贡河游船晚餐 + SPA</td>
-          <td>400 - 700</td>
-        </tr>
-        <tr>
-          <td>门票体验</td>
-          <td>五行山、水椰林、会安通票、统一宫、古芝地道等</td>
-          <td>120 - 250</td>
-        </tr>
-        <tr>
-          <td>伴手礼</td>
-          <td>芒果干、咖啡、灯笼等</td>
-          <td>100 - 300</td>
-        </tr>
-        <tr class="total">
-          <td>合计</td>
-          <td></td>
-          <td>6,800 - 12,680</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p style="font-size: 13px; color: #888; margin-top: 10px;">* 不含国际机票的当地花费约 4,300-7,530 元/人（含香港休息厅+越南国内机票+HO1328返程）。当地消费极低，一碗米其林米粉仅 12-25 元。摩托日租仅 30 元。</p>
   </div>
 
   <!-- ===== Tips ===== -->
@@ -2060,7 +2207,7 @@
   <!-- ===== Interactive Map ===== -->
   <div class="section">
     <h2><span class="icon">🗺️</span> 全程 Google 地图 · 岘港/会安/胡志明</h2>
-    <p class="sec-desc">基于 Google Maps 瓦片，55+标记点覆盖三城。点击标记查看详细信息，弹窗可跳转 Google Maps 导航</p>
+    <p class="sec-desc">基于 Google Maps 瓦片，78个标记点覆盖三城（含街头美食）。点击标记查看详细信息，弹窗可跳转 Google Maps 导航</p>
     <div id="travel-map"></div>
     <div style="text-align: center; margin: 8px 0; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
       <button id="map-toggle-btn" style="padding: 6px 16px; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; color: #333;">🛰️ 切换卫星视图</button>
@@ -2073,12 +2220,13 @@
       <div class="map-legend-item" data-type="rental"><div class="map-legend-dot" style="background:#2563eb;"></div>租车店</div>
       <div class="map-legend-item" data-type="hotel"><div class="map-legend-dot" style="background:#7c3aed;"></div>住宿区域</div>
       <div class="map-legend-item" data-type="airport"><div class="map-legend-dot" style="background:#0f6e56;"></div>机场</div>
+      <div class="map-legend-item" data-type="streetfood"><div class="map-legend-dot" style="background:#d4a017;"></div>街头美食</div>
     </div>
   </div>
 
   <div class="footer">
-    岘港 + 会安 + 胡志明 9日行程攻略 v8 · 7/25-8/2 · HX231/HX548 香港航空 · VN7141 越南航空 · HO1328 吉祥航空 · Google Maps<br>
-    Wink Danang Centre · Saigon Hotel · 自然美景 + 米其林美食 + 摩托自由行 · 2025年7月 · 祝旅途愉快
+    岘港 + 会安 + 胡志明 9日行程攻略 v10 · 7/25-8/2 · HX231/HX548 香港航空 · VN7141 越南航空 · HO1328 吉祥航空 · Google Maps<br>
+    Little Residence · Wink Danang Centre · Saigon Hotel · 自然美景 + 米其林美食 + 街头味道 + 摩托自由行 · 2025年7月 · 祝旅途愉快
   </div>
 
 </div>
@@ -2154,6 +2302,7 @@
   var iconRental = makeIcon('#2563eb');
   var iconHotel = makeIcon('#7c3aed');
   var iconAirport = makeIcon('#0f6e56');
+  var iconStreetFood = makeIcon('#d4a017');
 
   function popup(title, addr, typeLabel, color, lat, lng) {
     var gmapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng;
@@ -2207,6 +2356,18 @@
     { type: 'restaurant', name: 'Little Faifo 🔵Selected (会安)', addr: '66 Nguyen Thai Hoc, Hội An', lat: 15.8780, lng: 108.3380, icon: iconRestaurant, label: '米其林推荐' },
     { type: 'restaurant', name: 'Chau Kitchen & Bar 🔵Selected (会安)', addr: '141 Tran Phu, Hội An', lat: 15.8785, lng: 108.3300, icon: iconRestaurant, label: '米其林推荐' },
 
+    // Street Food - Hoi An
+    { type: 'streetfood', name: 'Cao Lầu Thanh (高楼面)', addr: '26 Thái Phiên, Hội An', lat: 15.8785, lng: 108.3350, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Bánh mì Phượng (会安法棍)', addr: '2B Phan Châu Trinh, Hội An', lat: 15.8800, lng: 108.3320, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'White Rose Restaurant (白玫瑰)', addr: '533 Hai Bà Trưng, Hội An', lat: 15.8765, lng: 108.3340, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Cơm Gà Bà Buội (会安鸡饭)', addr: '22 Phan Chu Trinh, Hội An', lat: 15.8788, lng: 108.3335, icon: iconStreetFood, label: '街头美食' },
+
+    // Street Food - Da Nang
+    { type: 'streetfood', name: 'Bún Chả Cá Bà Phiến (鱼饼米粉)', addr: '3 Hải Phòng, Hải Châu, Đà Nẵng', lat: 16.0700, lng: 108.2180, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Bánh Tráng Cuốn Thịt Heo (米纸卷猪肉)', addr: '4 Lê Duẩn, Thanh Khê, Đà Nẵng', lat: 16.0580, lng: 108.2200, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Bánh Xèo Bà Dưỡng (越南煎饼)', addr: 'H280+4 Đống Đa, Hải Châu, Đà Nẵng', lat: 16.0610, lng: 108.2060, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Chè Bà Dung (岘港甜品)', addr: '86 Hải Phòng, Hải Châu, Đà Nẵng', lat: 16.0690, lng: 108.2190, icon: iconStreetFood, label: '街头美食' },
+
     // Motorbike Rental - Da Nang
     { type: 'rental', name: 'Binh Minh Motorbike Rental', addr: '18 Phan Boi, An Hải, Sơn Trà · ☎ 0986 862 986', lat: 16.0630, lng: 108.2480, icon: iconRental, label: '租车店' },
     { type: 'rental', name: 'Huu Vy Motorbike Rental', addr: '297 Chinh Huu, Sơn Trà · ☎ 0932 445 145', lat: 16.0610, lng: 108.2520, icon: iconRental, label: '租车店' },
@@ -2252,7 +2413,15 @@
     { type: 'restaurant', name: 'Bún Bò Huế 14B 🥇Bib', addr: '14B Street 46, Ward 2, District 4', lat: 10.7580, lng: 106.7020, icon: iconRestaurant, label: '必比登' },
     { type: 'restaurant', name: 'Bò Kho Gánh 🔵Selected', addr: 'Lot H/029 Su Van Hanh, Ward 2, District 10', lat: 10.7620, lng: 106.6700, icon: iconRestaurant, label: '米其林推荐' },
     { type: 'restaurant', name: 'Mặn Mòi 🔵Selected·新增2025', addr: '34 Vo Van Tan, Ward 6, District 3', lat: 10.7700, lng: 106.6930, icon: iconRestaurant, label: '米其林推荐' },
-    { type: 'restaurant', name: 'The Monkey Gallery Dining 🔵Selected', addr: '3F, 91 Mac Thi Buoi, District 1', lat: 10.7730, lng: 106.7035, icon: iconRestaurant, label: '米其林推荐' }
+    { type: 'restaurant', name: 'The Monkey Gallery Dining 🔵Selected', addr: '3F, 91 Mac Thi Buoi, District 1', lat: 10.7730, lng: 106.7035, icon: iconRestaurant, label: '米其林推荐' },
+
+    // Street Food - Ho Chi Minh
+    { type: 'streetfood', name: 'Bánh Mì Huỳnh Hoa (西贡法棍)', addr: '26 Lê Thị Riêng, Q1', lat: 10.7690, lng: 106.6920, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Phở Hòa Pasteur (越南河粉)', addr: '260C Pasteur, Q3', lat: 10.7550, lng: 106.6940, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Hủ Tiếu Nam Vang Thành Đạt (柬埔寨米粉)', addr: '381 Nguyễn Trãi, Q1', lat: 10.7600, lng: 106.6680, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Bún Bò Huế Đông Ba (顺化牛肉粉)', addr: '110A Nguyễn Du, Q1', lat: 10.7750, lng: 106.6950, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Cà Phê Cheo Leo (老字号咖啡)', addr: '36 Triệu Quang Phục, Q5', lat: 10.7520, lng: 106.6700, icon: iconStreetFood, label: '街头美食' },
+    { type: 'streetfood', name: 'Chè Hiển Khánh (西贡甜品)', addr: '118 Hải Thượng Lãn Ông, Q5', lat: 10.7510, lng: 106.6680, icon: iconStreetFood, label: '街头美食' }
   ];
 
   var markers = [];
@@ -2263,7 +2432,7 @@
   });
 
   // Legend filter
-  var visible = { attraction: true, restaurant: true, rental: true, hotel: true, airport: true };
+  var visible = { attraction: true, restaurant: true, rental: true, hotel: true, airport: true, streetfood: true };
   var colorMap = { attraction: '#e85d3d', restaurant: '#a32d2d', rental: '#2563eb', hotel: '#7c3aed', airport: '#0f6e56' };
   document.querySelectorAll('.map-legend-item').forEach(function(item) {
     item.addEventListener('click', function() {
