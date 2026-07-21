@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+<Document>
+  <name>越南9日行程 · Vietnam 9-Day Travel Guide</name>
+  <description><![CDATA[岘港 + 会安 + 胡志明 9天7晚旅行攻略 (7/25 - 8/2)<br/>航班: HX231 → HX548 → VN7141 → HO1328<br/>64个标记点: 景点/米其林餐厅/租车店/酒店/机场]]></description>
+  <Style id="style_airport">
+    <IconStyle>
+      <color>ff0f6e56</color>
+      <scale>1.2</scale>
+      <Icon><href>https://maps.google.com/mapfiles/kml/shapes/airports.png</href></Icon>
+    </IconStyle>
+    <LabelStyle>
+      <scale>0.8</scale>
+    </LabelStyle>
+  </Style>
+  <Style id="style_attraction">
+    <IconStyle>
+      <color>ffe85d3d</color>
+      <scale>1.2</scale>
+      <Icon><href>https://maps.google.com/mapfiles/kml/paddle/ylw-stars.png</href></Icon>
+    </IconStyle>
+    <LabelStyle>
+      <scale>0.8</scale>
+    </LabelStyle>
+  </Style>
+  <Style id="style_hotel">
+    <IconStyle>
+      <color>ff7c3aed</color>
+      <scale>1.2</scale>
+      <Icon><href>https://maps.google.com/mapfiles/kml/lodging.png</href></Icon>
+    </IconStyle>
+    <LabelStyle>
+      <scale>0.8</scale>
+    </LabelStyle>
+  </Style>
+  <Style id="style_restaurant">
+    <IconStyle>
+      <color>ffa32d2d</color>
+      <scale>1.2</scale>
+      <Icon><href>https://maps.google.com/mapfiles/kml/dining.png</href></Icon>
+    </IconStyle>
+    <LabelStyle>
+      <scale>0.8</scale>
+    </LabelStyle>
+  </Style>
+  <Style id="style_rental">
+    <IconStyle>
+      <color>ff2563eb</color>
+      <scale>1.2</scale>
+      <Icon><href>https://maps.google.com/mapfiles/kml/cabs.png</href></Icon>
+    </IconStyle>
+    <LabelStyle>
+      <scale>0.8</scale>
+    </LabelStyle>
+  </Style>
+  <Folder>
+    <name>✈️ 机场 Airports (2)</name>
+    <open>1</open>
+    <Placemark>
+      <name>岘港国际机场 (DAD)</name>
+      <description><![CDATA[Thạnh Mỹ, Hòa Vang, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.044,108.199">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_airport</styleUrl>
+      <Point>
+        <coordinates>108.199,16.044,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>胡志明新山一机场 (SGN T2)</name>
+      <description><![CDATA[Trường Sơn, Tân Bình, TP.HCM<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.8188,106.6519">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_airport</styleUrl>
+      <Point>
+        <coordinates>106.6519,10.8188,0</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder>
+    <name>📷 行程景点 Attractions (24)</name>
+    <open>1</open>
+    <Placemark>
+      <name>韩市场 (Han Market)</name>
+      <description><![CDATA[11 Tran Phu, Hai Chau, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.0645,108.213">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.213,16.0645,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>粉红教堂 (Da Nang Cathedral)</name>
+      <description><![CDATA[156 Tran Phu, Hai Chau, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.064,108.212">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.212,16.064,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>龙桥 (Dragon Bridge)</name>
+      <description><![CDATA[Cầu Rồng, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.06,108.223">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.223,16.06,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>美溪海滩 (My Khe Beach)</name>
+      <description><![CDATA[Vo Nguyen Giap, Sơn Trà, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.062,108.249">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.249,16.062,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>山茶半岛 · 灵应寺 (观音像)</name>
+      <description><![CDATA[Thọ Quang, Sơn Trà, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.116,108.276">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.276,16.116,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>五行山 (Marble Mountains)</name>
+      <description><![CDATA[Hòa Hải, Ngũ Hành Sơn, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.01,108.27">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.27,16.01,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>海云岭 (Hai Van Pass)</name>
+      <description><![CDATA[Lộc Bổ, Phú Lộc, Thừa Thiên Huế<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.278,108.198">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.198,16.278,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>灵姑湾 (Lang Co Bay)</name>
+      <description><![CDATA[Lộc Vinh, Phú Lộc, Thừa Thiên Huế<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.292,108.181">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.181,16.292,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>巴拿山 (Ba Na Hills)</name>
+      <description><![CDATA[Hòa Ninh, Hòa Vang, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.998,108.006">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.006,15.998,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>会安古城 (Hoi An Ancient Town)</name>
+      <description><![CDATA[Minh An, Hội An, Quảng Nam<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.88,108.338">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.338,15.88,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>安邦海滩 (An Bang Beach)</name>
+      <description><![CDATA[Cẩm An, Hội An, Quảng Nam<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.87,108.335">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.335,15.87,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>水椰林 (Bay Mau Coconut Forest)</name>
+      <description><![CDATA[Cẩm Thanh, Hội An, Quảng Nam<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.86,108.35">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.35,15.86,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>红教堂 (Notre-Dame Cathedral)</name>
+      <description><![CDATA[01 Cong Xa Paris, Ben Nghe, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.779,106.695">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.695,10.779,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>中央邮局 (Central Post Office)</name>
+      <description><![CDATA[02 Cong Xa Paris, Ben Nghe, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7793,106.6955">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.6955,10.7793,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>西贡歌剧院 (Saigon Opera House)</name>
+      <description><![CDATA[07 Cong Truong Lam Son, Ben Nghe, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7765,106.703">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.703,10.7765,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>战争遗迹博物馆 (War Remnants Museum)</name>
+      <description><![CDATA[28 Vo Van Tan, District 3<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7725,106.6958">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.6958,10.7725,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>统一宫 (Reunification Palace)</name>
+      <description><![CDATA[135 Nam Ky Khoi Nghia, Ben Nghe, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7768,106.692">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.692,10.7768,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>滨城市场 (Ben Thanh Market)</name>
+      <description><![CDATA[Le Loi Blvd, Ben Thanh, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.772,106.698">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.698,10.772,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>粉红教堂 (Tan Dinh Church)</name>
+      <description><![CDATA[289 Hai Ba Trung, Ward 8, District 3<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7895,106.6975">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.6975,10.7895,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>咖啡公寓 (42 Nguyen Hue)</name>
+      <description><![CDATA[42 Nguyen Hue, Ben Nghe, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7735,106.7025">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.7025,10.7735,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bitexco 金融塔观景台</name>
+      <description><![CDATA[36 Ho Tung Mau, Ben Nghe, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7715,106.702">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.702,10.7715,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>西贡河 (Saigon River)</name>
+      <description><![CDATA[Bach Dang Wharf, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.775,106.71">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.71,10.775,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>湄公河三角洲 · 美拖 (My Tho)</name>
+      <description><![CDATA[My Tho, Tien Giang Province（距胡志明70km）<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.36,106.36">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.36,10.36,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>古芝地道 (Cu Chi Tunnels)</name>
+      <description><![CDATA[Phu Hiep, Cu Chi, TP.HCM（距市区40km）<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=11.066,106.538">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.538,11.066,0</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder>
+    <name>🏨 住宿 Hotels (3)</name>
+    <open>1</open>
+    <Placemark>
+      <name>Little Residence. A Boutique Hotel &amp; Spa (Day 1-2)</name>
+      <description><![CDATA[35 Đào Duy Từ, Cẩm Phô, Hội An · ☎ +84 235 3929 222<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.8793,108.3325">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_hotel</styleUrl>
+      <Point>
+        <coordinates>108.3325,15.8793,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Wink Hotel Danang Centre (Day 3-5)</name>
+      <description><![CDATA[178 Tran Phu, Phuoc Ninh, Hải Châu, Đà Nẵng<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.0638,108.2118">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_hotel</styleUrl>
+      <Point>
+        <coordinates>108.2118,16.0638,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Saigon Hotel (Day 6-8)</name>
+      <description><![CDATA[8 Dong Khoi St, Ben Nghe, District 1, HCMC<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7745,106.7028">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_hotel</styleUrl>
+      <Point>
+        <coordinates>106.7028,10.7745,0</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder>
+    <name>🍽️ 米其林餐厅 Michelin Restaurants (25)</name>
+    <open>1</open>
+    <Placemark>
+      <name>La Maison 1888 ⭐一星</name>
+      <description><![CDATA[InterContinental Danang, Bãi Bắc, Sơn Trà<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.1339,108.2944">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.2944,16.1339,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Nén Danang 🌱绿色之星</name>
+      <description><![CDATA[16 My Da Tay 2, Ngũ Hành Sơn<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.0489,108.2856">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.2856,16.0489,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bún Chả Cá 109 🥇Bib</name>
+      <description><![CDATA[109 Nguyen Chi Thanh, Hải Châu<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.0686,108.2158">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.2158,16.0686,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bé Mặn 🥇Bib</name>
+      <description><![CDATA[Lot 9, Vo Nguyen Giap, Sơn Trà<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.067,108.251">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.251,16.067,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Quê Xưa 🥇Bib</name>
+      <description><![CDATA[1165-167 Nui Thanh, Hải Châu<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.0598,108.2102">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.2102,16.0598,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bánh Xèo 76 🥇Bib</name>
+      <description><![CDATA[85A Le Van Huu, Ngũ Hành Sơn<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.045,108.267">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.267,16.045,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bún Bò Huế Bà Thương 🥇Bib</name>
+      <description><![CDATA[23 Tran Quoc Toan, Hải Châu<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.064,108.216">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.216,16.064,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Shamballa 🥇Bib</name>
+      <description><![CDATA[277 Tran Hung Dao, Sơn Trà<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.072,108.232">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.232,16.072,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bún Riêu Cua 39 🔵Selected</name>
+      <description><![CDATA[39 Le Hong Phong, Hải Châu<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.0655,108.2085">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.2085,16.0655,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Mộc 🔵Selected</name>
+      <description><![CDATA[26 To Hien Thanh, Sơn Trà<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.063,108.242">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.242,16.063,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bếp Cuốn 🔵Selected</name>
+      <description><![CDATA[31-33 Tran Bach Dang, Sơn Trà<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.062,108.238">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.238,16.062,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Little Faifo 🔵Selected (会安)</name>
+      <description><![CDATA[66 Nguyen Thai Hoc, Hội An<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.878,108.338">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.338,15.878,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Chau Kitchen &amp; Bar 🔵Selected (会安)</name>
+      <description><![CDATA[141 Tran Phu, Hội An<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.8785,108.33">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>108.33,15.8785,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Ănăn Saigon ⭐一星</name>
+      <description><![CDATA[89 Ton That Dam, Ben Nghe, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.774,106.7015">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.7015,10.774,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>CieL ⭐一星·新增2025</name>
+      <description><![CDATA[50 6/3 Street, Thao Dien, Thu Duc City<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.805,106.738">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.738,10.805,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Coco Dining ⭐一星</name>
+      <description><![CDATA[27 Ly Tu Trong, Ben Nghe, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.778,106.701">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.701,10.778,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Cơm Tấm Ba Ghiền 🥇Bib</name>
+      <description><![CDATA[84 Dang Van Ngu, Ward 10, Phu Nhuan<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.796,106.689">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.689,10.796,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bánh Xèo 46A 🥇Bib</name>
+      <description><![CDATA[46A Dinh Cong Trang, Tan Dinh, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.789,106.6985">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.6985,10.789,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Cục Gạch Quán 🥇Bib</name>
+      <description><![CDATA[10 Dang Tat, Tan Dinh, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.7905,106.699">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.699,10.7905,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Phở Lệ 🥇Bib</name>
+      <description><![CDATA[413-415 Nguyen Trai, Ward 7, District 5<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.745,106.665">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.665,10.745,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Phở Miến Gà Kỳ Đồng 🥇Bib</name>
+      <description><![CDATA[4/5Bis Ky Dong, Ward 9, District 3<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.769,106.69">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.69,10.769,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bún Bò Huế 14B 🥇Bib</name>
+      <description><![CDATA[14B Street 46, Ward 2, District 4<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.758,106.702">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.702,10.758,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bò Kho Gánh 🔵Selected</name>
+      <description><![CDATA[Lot H/029 Su Van Hanh, Ward 2, District 10<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.762,106.67">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.67,10.762,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Mặn Mòi 🔵Selected·新增2025</name>
+      <description><![CDATA[34 Vo Van Tan, Ward 6, District 3<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.77,106.693">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.693,10.77,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>The Monkey Gallery Dining 🔵Selected</name>
+      <description><![CDATA[3F, 91 Mac Thi Buoi, District 1<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.773,106.7035">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_restaurant</styleUrl>
+      <Point>
+        <coordinates>106.7035,10.773,0</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+  <Folder>
+    <name>🏍️ 摩托车租车 Motorbike Rental (10)</name>
+    <open>1</open>
+    <Placemark>
+      <name>Binh Minh Motorbike Rental</name>
+      <description><![CDATA[18 Phan Boi, An Hải, Sơn Trà · ☎ 0986 862 986<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.063,108.248">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.248,16.063,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Huu Vy Motorbike Rental</name>
+      <description><![CDATA[297 Chinh Huu, Sơn Trà · ☎ 0932 445 145<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.061,108.252">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.252,16.061,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Song Han Motorbike Rental</name>
+      <description><![CDATA[86/26 Thi Sach, Hải Châu · ☎ 0935 304 050<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.062,108.214">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.214,16.062,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Motorvina (岘港店)</name>
+      <description><![CDATA[11 An Thuong 19, Sơn Trà · ☎ 0835 115 599<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.062,108.247">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.247,16.062,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Andy Motorbike Rental</name>
+      <description><![CDATA[30 Le Thuoc, An Hải, Sơn Trà · ☎ 0935 888 028<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.064,108.25">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.25,16.064,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Thanh Cong Motorbike Rental</name>
+      <description><![CDATA[12 Pham Thieu, Thanh Khé · ☎ 0377 276 635<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.058,108.208">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.208,16.058,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Hoi An Bike Rental</name>
+      <description><![CDATA[14 Cua Dai, Hội An · ☎ 0961 172 420<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.873,108.342">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.342,15.873,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Mr. Hai Motorbike Rental</name>
+      <description><![CDATA[170 Ly Thai To, Hội An · ☎ 0784 840 489<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.879,108.336">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.336,15.879,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Hoi An Scooter Rental</name>
+      <description><![CDATA[38/3 Cua Dai, Hội An · ☎ 0935 640 064<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.874,108.34">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.34,15.874,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Motorvina (会安店)</name>
+      <description><![CDATA[439/28 Cua Dai, Hội An · ☎ 0848 005 599<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=15.871,108.345">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_rental</styleUrl>
+      <Point>
+        <coordinates>108.345,15.871,0</coordinates>
+      </Point>
+    </Placemark>
+  </Folder>
+</Document>
+</kml>

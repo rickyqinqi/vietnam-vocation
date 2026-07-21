@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>导入 Google Maps 指南 · 越南行程</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f0f4f8; color: #1a1a2e; line-height: 1.8; }
+.hero { background: linear-gradient(135deg, #fa6b3d 0%, #e85d3d 50%, #d4380c 100%); color: #fff; padding: 50px 20px; text-align: center; }
+.hero h1 { font-size: 2.2em; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.hero p { font-size: 1.1em; opacity: 0.95; max-width: 600px; margin: 0 auto; }
+.container { max-width: 800px; margin: -30px auto 40px; padding: 0 20px; }
+.card { background: #fff; border-radius: 16px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+.card h2 { font-size: 1.5em; color: #e85d3d; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.card h3 { font-size: 1.15em; color: #1a1a2e; margin: 20px 0 10px; }
+.step { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+.step-num { flex-shrink: 0; width: 36px; height: 36px; background: linear-gradient(135deg, #e85d3d, #d4380c); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1em; }
+.step-content { flex: 1; }
+.step-content p { color: #444; margin-bottom: 6px; }
+.step-content code { background: #f5f5f5; padding: 2px 8px; border-radius: 4px; font-size: 0.9em; color: #d4380c; }
+.btn { display: inline-block; padding: 14px 32px; border-radius: 10px; font-size: 1.1em; font-weight: 600; text-decoration: none; transition: all 0.3s; margin: 6px 6px 6px 0; }
+.btn-primary { background: linear-gradient(135deg, #e85d3d, #d4380c); color: #fff; box-shadow: 0 4px 12px rgba(232,93,61,0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,93,61,0.4); }
+.btn-google { background: #fff; color: #4285f4; border: 2px solid #4285f4; }
+.btn-google:hover { background: #4285f4; color: #fff; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 20px 0; }
+.stat { background: #f8f9fa; border-radius: 10px; padding: 16px; text-align: center; }
+.stat-num { font-size: 1.8em; font-weight: 800; color: #e85d3d; }
+.stat-label { font-size: 0.85em; color: #666; margin-top: 4px; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
+.legend-item { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: 0.9em; }
+.dot { width: 12px; height: 12px; border-radius: 50; }
+.tip { background: #fff7e6; border-left: 4px solid #faad14; padding: 14px 18px; border-radius: 8px; margin: 12px 0; }
+.tip strong { color: #d48806; }
+.note { background: #e6f7ff; border-left: 4px solid #1890ff; padding: 14px 18px; border-radius: 8px; margin: 12px 0; }
+.note strong { color: #096dd9; }
+@media (max-width: 600px) { .hero h1 { font-size: 1.6em; } .card { padding: 20px; } }
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>🗺️ 导入 Google Maps 指南</h1>
+  <p>将越南9日行程全部64个地点一键导入你的 Google Maps</p>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h2>📋 行程地点总览</h2>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">64</div><div class="stat-label">总标记点</div></div>
+      <div class="stat"><div class="stat-num">24</div><div class="stat-label">行程景点</div></div>
+      <div class="stat"><div class="stat-num">25</div><div class="stat-label">米其林餐厅</div></div>
+      <div class="stat"><div class="stat-num">10</div><div class="stat-label">租车店</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">酒店</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">机场</div></div>
+    </div>
+    <div class="legend">
+      <span class="legend-item" style="background:#e8f5e9;"><span class="dot" style="background:#0f6e56;">✈️</span> 机场</span>
+      <span class="legend-item" style="background:#fff3e0;"><span class="dot" style="background:#e85d3d;">📷</span> 景点</span>
+      <span class="legend-item" style="background:#f3e5f5;"><span class="dot" style="background:#7c3aed;">🏨</span> 酒店</span>
+      <span class="legend-item" style="background:#ffebee;"><span class="dot" style="background:#a32d2d;">🍽️</span> 餐厅</span>
+      <span class="legend-item" style="background:#e3f2fd;"><span class="dot" style="background:#2563eb;">🏍️</span> 租车</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🚀 导入步骤（推荐方式）</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>下载 KML 文件</h3>
+        <p>从 GitHub 仓库下载 <code>越南行程Google地图导入.kml</code> 文件</p>
+        <a class="btn btn-primary" href="https://raw.githubusercontent.com/rickyqinqi/vietnam-vocation/main/越南行程Google地图导入.kml" download>⬇️ 下载 KML 文件</a>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>打开 Google My Maps</h3>
+        <p>在浏览器中打开 Google 自定义地图（需登录 Google 账号）</p>
+        <a class="btn btn-google" href="https://mymaps.google.com/" target="_blank">🗺️ 打开 Google My Maps</a>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>创建新地图</h3>
+        <p>点击页面顶部的 <strong>「创建新地图」</strong>（Create a new map）</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>导入 KML 文件</h3>
+        <p>在左侧面板中点击 <strong>「导入」</strong>（Import）按钮，选择刚下载的 KML 文件上传</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>完成！🎉</h3>
+        <p>所有64个地点将按5个分类（机场/景点/酒店/餐厅/租车）自动分组显示在地图上</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📱 在手机上查看</h2>
+    <p>导入 My Maps 后，在手机 Google Maps APP 中也能查看：</p>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content"><p>打开 Google Maps APP → 点击底部 <strong>「已保存」</strong> 标签</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content"><p>向下滚动找到 <strong>「地图」</strong>（Maps）→ 点击进入</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content"><p>选择你创建的 <strong>「越南9日行程」</strong> 地图即可查看所有标记点</p></div>
+    </div>
+    <div class="tip">
+      <strong>💡 小贴士：</strong>在手机上导航时，点击任意标记点 → 选择「路线」即可直接开始导航到该地点。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔄 备选方式：逐个保存</h2>
+    <p>如果你只想保存部分地点，可以点击下方链接直接在 Google Maps 中打开并手动「保存」：</p>
+    <div class="note">
+      <strong>📌 注意：</strong>此方式需要逐个点击保存，64个地点较为耗时。推荐使用上方的 KML 批量导入方式。
+    </div>
+    <p style="margin-top:12px;">完整地点列表（点击在 Google Maps 打开）：</p>
+    <div id="link-list" style="margin-top:12px;"></div>
+  </div>
+
+  <div class="card" style="text-align:center;">
+    <h2>🔗 相关链接</h2>
+    <a class="btn btn-primary" href="https://rickyqinqi.github.io/vietnam-vocation/" target="_blank">📖 查看完整行程攻略</a>
+    <a class="btn btn-google" href="https://github.com/rickyqinqi/vietnam-vocation" target="_blank">📦 GitHub 仓库</a>
+  </div>
+</div>
+
+<script>
+var locations = [
+  {cat:"✈️",name:"岘港国际机场 (DAD)",lat:16.0440,lng:108.1990},
+  {cat:"✈️",name:"胡志明新山一机场 (SGN T2)",lat:10.8188,lng:106.6519},
+  {cat:"📷",name:"韩市场 (Han Market)",lat:16.0645,lng:108.2130},
+  {cat:"📷",name:"粉红教堂 (Da Nang Cathedral)",lat:16.0640,lng:108.2120},
+  {cat:"📷",name:"龙桥 (Dragon Bridge)",lat:16.0600,lng:108.2230},
+  {cat:"📷",name:"美溪海滩 (My Khe Beach)",lat:16.0620,lng:108.2490},
+  {cat:"📷",name:"山茶半岛·灵应寺",lat:16.1160,lng:108.2760},
+  {cat:"📷",name:"五行山 (Marble Mountains)",lat:16.0100,lng:108.2700},
+  {cat:"📷",name:"海云岭 (Hai Van Pass)",lat:16.2780,lng:108.1980},
+  {cat:"📷",name:"灵姑湾 (Lang Co Bay)",lat:16.2920,lng:108.1810},
+  {cat:"📷",name:"巴拿山 (Ba Na Hills)",lat:15.9980,lng:108.0060},
+  {cat:"📷",name:"会安古城",lat:15.8800,lng:108.3380},
+  {cat:"📷",name:"安邦海滩",lat:15.8700,lng:108.3350},
+  {cat:"📷",name:"水椰林",lat:15.8600,lng:108.3500},
+  {cat:"🏨",name:"Little Residence (会安)",lat:15.8793,lng:108.3325},
+  {cat:"🏨",name:"Wink Hotel Danang Centre",lat:16.0638,lng:108.2118},
+  {cat:"🏨",name:"Saigon Hotel (胡志明)",lat:10.7745,lng:106.7028},
+  {cat:"🍽️",name:"La Maison 1888 ⭐一星",lat:16.1339,lng:108.2944},
+  {cat:"🍽️",name:"Nén Danang 🌱绿色之星",lat:16.0489,lng:108.2856},
+  {cat:"🍽️",name:"Bún Chả Cá 109 🥇Bib",lat:16.0686,lng:108.2158},
+  {cat:"🍽️",name:"Bé Mặn 🥇Bib",lat:16.0670,lng:108.2510},
+  {cat:"🍽️",name:"Quê Xưa 🥇Bib",lat:16.0598,lng:108.2102},
+  {cat:"🍽️",name:"Bánh Xèo 76 🥇Bib",lat:16.0450,lng:108.2670},
+  {cat:"🍽️",name:"Bún Bò Huế Bà Thương 🥇Bib",lat:16.0640,lng:108.2160},
+  {cat:"🍽️",name:"Shamballa 🥇Bib",lat:16.0720,lng:108.2320},
+  {cat:"🍽️",name:"Bún Riêu Cua 39 🔵",lat:16.0655,lng:108.2085},
+  {cat:"🍽️",name:"Mộc 🔵",lat:16.0630,lng:108.2420},
+  {cat:"🍽️",name:"Bếp Cuốn 🔵",lat:16.0620,lng:108.2380},
+  {cat:"🍽️",name:"Little Faifo 🔵 (会安)",lat:15.8780,lng:108.3380},
+  {cat:"🍽️",name:"Chau Kitchen 🔵 (会安)",lat:15.8785,lng:108.3300},
+  {cat:"🏍️",name:"Binh Minh Rental",lat:16.0630,lng:108.2480},
+  {cat:"🏍️",name:"Huu Vy Rental",lat:16.0610,lng:108.2520},
+  {cat:"🏍️",name:"Song Han Rental",lat:16.0620,lng:108.2140},
+  {cat:"🏍️",name:"Motorvina (岘港)",lat:16.0620,lng:108.2470},
+  {cat:"🏍️",name:"Andy Rental",lat:16.0640,lng:108.2500},
+  {cat:"🏍️",name:"Thanh Cong Rental",lat:16.0580,lng:108.2080},
+  {cat:"🏍️",name:"Hoi An Bike Rental",lat:15.8730,lng:108.3420},
+  {cat:"🏍️",name:"Mr. Hai Rental",lat:15.8790,lng:108.3360},
+  {cat:"🏍️",name:"Hoi An Scooter Rental",lat:15.8740,lng:108.3400},
+  {cat:"🏍️",name:"Motorvina (会安)",lat:15.8710,lng:108.3450},
+  {cat:"📷",name:"红教堂 (Notre-Dame)",lat:10.7790,lng:106.6950},
+  {cat:"📷",name:"中央邮局",lat:10.7793,lng:106.6955},
+  {cat:"📷",name:"西贡歌剧院",lat:10.7765,lng:106.7030},
+  {cat:"📷",name:"战争遗迹博物馆",lat:10.7725,lng:106.6958},
+  {cat:"📷",name:"统一宫",lat:10.7768,lng:106.6920},
+  {cat:"📷",name:"滨城市场",lat:10.7720,lng:106.6980},
+  {cat:"📷",name:"粉红教堂 (Tan Dinh)",lat:10.7895,lng:106.6975},
+  {cat:"📷",name:"咖啡公寓",lat:10.7735,lng:106.7025},
+  {cat:"📷",name:"Bitexco 金融塔",lat:10.7715,lng:106.7020},
+  {cat:"📷",name:"西贡河",lat:10.7750,lng:106.7100},
+  {cat:"📷",name:"湄公河·美拖",lat:10.3600,lng:106.3600},
+  {cat:"📷",name:"古芝地道",lat:11.0660,lng:106.5380},
+  {cat:"🍽️",name:"Ănăn Saigon ⭐一星",lat:10.7740,lng:106.7015},
+  {cat:"🍽️",name:"CieL ⭐一星",lat:10.8050,lng:106.7380},
+  {cat:"🍽️",name:"Coco Dining ⭐一星",lat:10.7780,lng:106.7010},
+  {cat:"🍽️",name:"Cơm Tấm Ba Ghiền 🥇Bib",lat:10.7960,lng:106.6890},
+  {cat:"🍽️",name:"Bánh Xèo 46A 🥇Bib",lat:10.7890,lng:106.6985},
+  {cat:"🍽️",name:"Cục Gạch Quán 🥇Bib",lat:10.7905,lng:106.6990},
+  {cat:"🍽️",name:"Phở Lệ 🥇Bib",lat:10.7450,lng:106.6650},
+  {cat:"🍽️",name:"Phở Miến Gà Kỳ Đồng 🥇Bib",lat:10.7690,lng:106.6900},
+  {cat:"🍽️",name:"Bún Bò Huế 14B 🥇Bib",lat:10.7580,lng:106.7020},
+  {cat:"🍽️",name:"Bò Kho Gánh 🔵",lat:10.7620,lng:106.6700},
+  {cat:"🍽️",name:"Mặn Mòi 🔵",lat:10.7700,lng:106.6930},
+  {cat:"🍽️",name:"The Monkey Gallery 🔵",lat:10.7730,lng:106.7035},
+];
+var list = document.getElementById('link-list');
+locations.forEach(function(loc) {
+  var a = document.createElement('a');
+  a.href = 'https://www.google.com/maps/search/?api=1&query=' + loc.lat + ',' + loc.lng;
+  a.target = '_blank';
+  a.style.cssText = 'display:inline-block;margin:4px 4px;padding:6px 14px;background:#f5f5f5;border-radius:6px;font-size:0.85em;color:#1967d2;text-decoration:none;';
+  a.textContent = loc.cat + ' ' + loc.name;
+  list.appendChild(a);
+});
+</script>
+</body>
+</html>
