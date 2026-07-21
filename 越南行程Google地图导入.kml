@@ -2,7 +2,7 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
 <Document>
   <name>越南9日行程 · Vietnam 9-Day Travel Guide</name>
-  <description><![CDATA[岘港 + 会安 + 胡志明 9天7晚旅行攻略 (7/25 - 8/2)<br/>航班: HX231 → HX548 → VN7141 → HO1328<br/>64个标记点: 景点/米其林餐厅/租车店/酒店/机场]]></description>
+  <description><![CDATA[岘港 + 会安 + 胡志明 9天7晚旅行攻略 (7/25 - 8/2)<br/>航班: HX231 → HX548 → VN7141 → HO1328<br/>66个标记点: 景点/米其林餐厅/租车店/酒店/机场]]></description>
   <Style id="style_airport">
     <IconStyle>
       <color>ff0f6e56</color>
@@ -74,7 +74,7 @@
     </Placemark>
   </Folder>
   <Folder>
-    <name>📷 行程景点 Attractions (24)</name>
+    <name>📷 行程景点 Attractions (26)</name>
     <open>1</open>
     <Placemark>
       <name>韩市场 (Han Market)</name>
@@ -146,6 +146,14 @@
       <styleUrl>#style_attraction</styleUrl>
       <Point>
         <coordinates>108.006,15.998,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>沙洲市场 (Con Market / Chợ Cồn)</name>
+      <description><![CDATA[269 Ong Ich Khiem, Hai Chau 2, Đà Nẵng · 营业06:00-21:00<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=16.071,108.2128">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>108.2128,16.071,0</coordinates>
       </Point>
     </Placemark>
     <Placemark>
@@ -266,6 +274,14 @@
       <styleUrl>#style_attraction</styleUrl>
       <Point>
         <coordinates>106.538,11.066,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>夜间观光巴士上车点 (Night Bus Tour)</name>
+      <description><![CDATA[Le Loi & Nguyen Hue, Ben Nghe, District 1 · 歌剧院旁红色双层巴士<br/><br/><a href="https://www.google.com/maps/search/?api=1&query=10.776,106.7028">在 Google Maps 中打开 →</a>]]></description>
+      <styleUrl>#style_attraction</styleUrl>
+      <Point>
+        <coordinates>106.7028,10.776,0</coordinates>
       </Point>
     </Placemark>
   </Folder>
