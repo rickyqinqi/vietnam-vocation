@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>越南岘港+会安+胡志明 9日行程攻略 v8 · 7月25日-8月2日</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f5f3ee;
+    color: #2c2c2a;
+    line-height: 1.75;
+    padding: 0;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 0; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1a6b5c 0%, #0d9e75 40%, #534ab7 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 30px; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; }
+  .hero .subtitle { font-size: 15px; opacity: 0.9; margin-bottom: 20px; }
+  .hero .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .hero .tag {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 13px;
+  }
+
+  /* Section */
+  .section { padding: 36px 30px; }
+  .section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section h2 .icon { font-size: 26px; }
+  .section .sec-desc { font-size: 14px; color: #888; margin-bottom: 24px; }
+
+  /* Day card */
+  .day-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #f0ede5;
+  }
+  .day-badge {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .day-badge.hoi-an { background: #534ab7; }
+  .day-badge.danang { background: #0f6e56; }
+  .day-badge.depart { background: #d85a30; }
+  .day-badge.saigon { background: #185fa5; }
+  .day-title { font-size: 18px; font-weight: 700; }
+  .day-subtitle { font-size: 13px; color: #888; }
+  .day-phase {
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-left: auto;
+    font-weight: 600;
+  }
+  .phase-hoi-an { background: #eeedfe; color: #534ab7; }
+  .phase-danang { background: #e1f5ee; color: #0f6e56; }
+  .phase-saigon { background: #e6f1fb; color: #185fa5; }
+
+  /* Timeline */
+  .timeline-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .time-label {
+    flex-shrink: 0;
+    width: 70px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f6e56;
+    padding-top: 2px;
+  }
+  .timeline-content { flex: 1; }
+  .timeline-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .timeline-content p { font-size: 14px; color: #555; }
+
+  /* Michelin badge */
+  .michelin-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .michelin-star { background: #fcebed; color: #a32d2d; }
+  .michelin-green { background: #eaf3de; color: #3b6d11; }
+  .michelin-bib { background: #faeeda; color: #854f0b; }
+  .michelin-selected { background: #e6f1fb; color: #185fa5; }
+
+  /* Highlight box */
+  .highlight-box {
+    background: #f8f6f0;
+    border-left: 3px solid #0f6e56;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .highlight-box.nature { border-left-color: #1d9e75; background: #f0faf6; }
+  .highlight-box.food { border-left-color: #ba7517; background: #fdf8ed; }
+  .highlight-box.tip { border-left-color: #534ab7; background: #f4f3fc; }
+
+  .highlight-box .label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .highlight-box.nature .label { color: #0f6e56; }
+  .highlight-box.food .label { color: #854f0b; }
+  .highlight-box.tip .label { color: #534ab7; }
+
+  /* Michelin guide table */
+  .michelin-section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .michelin-card {
+    display: flex;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0ede5;
+  }
+  .michelin-card:last-child { border-bottom: none; }
+  .michelin-info { flex: 1; }
+  .michelin-info h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .michelin-info .meta { font-size: 12px; color: #999; margin-bottom: 4px; }
+  .michelin-info p { font-size: 13px; color: #666; }
+  .michelin-price { text-align: right; font-size: 13px; font-weight: 700; color: #0f6e56; white-space: nowrap; }
+
+  /* Hotel card */
+  .hotel-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 14px;
+    border: 1px solid #eee;
+  }
+  .hotel-card .hotel-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .hotel-card .hotel-meta { font-size: 13px; color: #888; margin-bottom: 8px; }
+  .hotel-card .hotel-desc { font-size: 14px; color: #555; }
+  .hotel-card .hotel-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 6px;
+    font-weight: 600;
+  }
+
+  /* Budget table */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+  }
+  .budget-table th {
+    background: #0f6e56;
+    color: #fff;
+    padding: 10px 14px;
+    font-size: 13px;
+    text-align: left;
+  }
+  .budget-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+  }
+  .budget-table tr:nth-child(even) { background: #f9faf7; }
+  .budget-table .total td { font-weight: 700; background: #e1f5ee; }
+
+  /* Tips */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .tip-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #eee;
+  }
+  .tip-item .tip-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #0f6e56;
+    margin-bottom: 4px;
+  }
+  .tip-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .tip-item p { font-size: 13px; color: #666; }
+
+  /* Packing list */
+  .packing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .packing-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .packing-item::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #0f6e56; flex-shrink: 0; }
+
+  .divider { height: 1px; background: #e5e2da; margin: 30px 0; }
+
+  /* Departure / Layover */
+  .layover-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #d85a30;
+  }
+  .layover-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .layover-option {
+    background: #f8f6f0;
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid #eee;
+  }
+  .layover-option h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .layover-option ul {
+    list-style: none;
+    padding: 0;
+  }
+  .layover-option li {
+    font-size: 13px;
+    color: #555;
+    padding: 3px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .layover-option li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #d85a30;
+  }
+  .layover-option .opt-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #e1f5ee;
+    color: #0f6e56;
+  }
+  .flight-route {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  .flight-route .city {
+    background: #f0ede5;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 700;
+  }
+  .flight-route .arrow {
+    color: #d85a30;
+    font-weight: 700;
+  }
+  .flight-route .layover-tag {
+    background: #fcebed;
+    color: #a32d2d;
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Motorbike Rental */
+  .rental-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .rental-area-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 20px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0ede5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rental-area-title:first-child { margin-top: 0; }
+  .rental-shop {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0ede5;
+  }
+  .rental-shop:last-child { border-bottom: none; }
+  .rental-shop .shop-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: #e1f5ee;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .rental-shop .shop-info { flex: 1; }
+  .rental-shop .shop-info h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  .rental-shop .shop-info .shop-addr { font-size: 12px; color: #999; margin-bottom: 4px; }
+  .rental-shop .shop-info p { font-size: 13px; color: #555; }
+  .rental-shop .shop-price {
+    text-align: right;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f6e56;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .rental-tips-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+  }
+  .rental-tips-list li {
+    font-size: 14px;
+    color: #555;
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    border-bottom: 1px solid #f5f3ee;
+  }
+  .rental-tips-list li:last-child { border-bottom: none; }
+  .rental-tips-list li::before {
+    content: "🏍️";
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+  }
+  .rental-tips-list li strong { color: #2c2c2a; }
+
+  /* Map section */
+  #travel-map { height: 600px; border-radius: 14px; overflow: hidden; border: 2px solid #e5e2da; margin-top: 16px; z-index: 1; }
+  .map-legend {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; padding: 14px 18px;
+    background: #faf8f3; border-radius: 10px; border: 1px solid #e5e2da;
+  }
+  .map-legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #555; cursor: pointer; transition: opacity 0.2s; }
+  .map-legend-item:hover { opacity: 0.6; }
+  .map-legend-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+  .map-marker-popup { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .map-marker-popup h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .map-marker-popup .popup-addr { font-size: 12px; color: #888; margin-bottom: 4px; }
+  .map-marker-popup .popup-type { font-size: 11px; padding: 2px 8px; border-radius: 4px; display: inline-block; font-weight: 600; }
+  .leaflet-popup-content { margin: 12px 14px; line-height: 1.6; }
+  .leaflet-popup-content-wrapper { border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  .map-marker-popup a:hover { text-decoration: underline !important; }
+  #map-toggle-btn:hover { background: #f0f0f0 !important; border-color: #999 !important; }
+  .leaflet-container { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+
+  .footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+    color: #999;
+    background: #f5f3ee;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 40px 20px; }
+    .hero h1 { font-size: 22px; }
+    .section { padding: 24px 16px; }
+    .day-card { padding: 18px; }
+    .time-label { width: 56px; font-size: 12px; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .layover-options { grid-template-columns: 1fr; }
+    .rental-shop { flex-direction: column; gap: 8px; }
+    .rental-shop .shop-price { text-align: left; }
+    .flight-route { font-size: 12px; }
+    .flight-route .city { padding: 4px 10px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>越南岘港 + 会安 + 胡志明 9日行程攻略</h1>
+    <div class="subtitle">7月25日-8月2日 · HX231/HX548/VN7141/HO1328 · Little Residence · Wink Danang · Saigon Hotel · 自然美景 · 米其林美食</div>
+    <div class="tags">
+      <span class="tag">7/25 HX231 PVG→HKG→DAD</span>
+      <span class="tag">Day 1-2 会安 Little Residence</span>
+      <span class="tag">Day 3-5 岘港 Wink Hotel</span>
+      <span class="tag">Day 6-8 胡志明 Saigon Hotel</span>
+      <span class="tag">7/30 VN7141 岘港→胡志明</span>
+      <span class="tag">8/2 HO1328 凌晨飞浦东</span>
+      <span class="tag">15+家米其林餐厅</span>
+      <span class="tag">海云岭/灵姑湾/湄公河</span>
+    </div>
+  </div>
+
+  <!-- ===== Departure & Layover ===== -->
+  <div class="section">
+    <h2><span class="icon">✈️</span> 出发篇 · 7月25日 上海 → 香港转机 → 岘港</h2>
+    <p class="sec-desc">香港航空 HX231（7/25）+ HX548（7/25），香港机场转机 4 小时 10 分</p>
+
+    <div class="layover-card">
+      <div class="flight-route">
+        <span class="city">上海浦东 PVG</span>
+        <span class="arrow">HX231 · 2h45m</span>
+        <span class="city">香港 HKG</span>
+        <span class="layover-tag">转机 4h10m</span>
+        <span class="arrow">HX548 · 1h50m</span>
+        <span class="city">岘港 DAD</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label" style="color:#d85a30;">07:35</div>
+        <div class="timeline-content">
+          <h4>HX231 · 上海浦东 T2 出发</h4>
+          <p>香港航空 HX231，浦东 T2 → 香港 T1，A321 机型，飞行约 2 小时 45 分。值机柜台 B29-B34，建议提前 2 小时到达。选靠窗座位，降落前可俯瞰大屿山海岸线。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label" style="color:#d85a30;">10:20</div>
+        <div class="timeline-content">
+          <h4>抵达香港国际机场 T1 · 开始转机</h4>
+          <p>下机后查看 HX548 登机口（值机柜台 K 区，通常在 T1 中场客运廊方向）。转机时间 4 小时 10 分，足够在机场内悠闲用餐、散步和体验贵宾休息厅。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box tip">
+        <span class="label">转机时间分配建议</span>
+        到港后预留 15 分钟走转机通道 → 1 小时美食 + 散步逛街 → 2 小时贵宾休息厅休息/淋浴 → 预留 45 分钟回到登机口。
+      </div>
+
+      <h3 style="font-size: 16px; font-weight: 700; margin: 20px 0 12px;">🍜 香港机场美食 & 散步路线</h3>
+
+      <div class="layover-options">
+        <div class="layover-option">
+          <h4>美食打卡 <span class="opt-badge">推荐</span></h4>
+          <p style="font-size: 13px; color: #666; margin-bottom: 8px;">不出关，T1 禁区内一站式吃逛</p>
+          <ul>
+            <li><strong>阿鸿小吃</strong>（T1 L7 7F 近 1 号闸口）— 米其林推荐卤水鹅片，人均 150 港币</li>
+            <li><strong>阿元来了</strong>（T1 L7）— 米其林推荐台湾味，鲁肉饭+盐酥鸡，人均 80 港币</li>
+            <li><strong>蛋挞王</strong>（T1 L7）— 现烤葡挞 18 港币/个，酥皮层次分明，趁热吃最佳</li>
+            <li><strong>敏华冰厅</strong>（T1 L7）— 港式茶餐厅，黯然销魂饭+糖心蛋，人均 70 港币</li>
+            <li><strong>Läderach</strong>（T1 L7）— 瑞士现做巧克力，送人自吃两相宜</li>
+            <li><strong>Fortnum &amp; Mason</strong>（T1 L7）— 英伦百年品牌，红茶礼盒精致</li>
+          </ul>
+        </div>
+
+        <div class="layover-option">
+          <h4>散步打卡 <span class="opt-badge">免费</span></h4>
+          <p style="font-size: 13px; color: #666; margin-bottom: 8px;">机场内步行探索，轻松消磨时间</p>
+          <ul>
+            <li><strong>天际走廊 Sky Bridge</strong>（T1 近 15 号闸口）— 全球最长空侧天桥，横跨跑道，俯瞰飞机起降，拍照绝佳</li>
+            <li><strong>古窑公园 &amp; 遨堂</strong>（T1 旁）— 仿宋龙窑遗址+绿植休憩区，散步放松</li>
+            <li><strong>航空探索馆</strong>（T1 L6）— 互动展览，了解航空历史</li>
+            <li><strong>IMAX 影院</strong>（T2 L6）— 80-100 港币/场，打发时间利器</li>
+            <li><strong>机场免税购物</strong> — T1 L7 禁区，Dior/Chanel/免税烟酒，比市区便宜 10-20%</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 12px;">🛋️ 贵宾休息厅推荐</h3>
+
+      <div class="layover-options">
+        <div class="layover-option">
+          <h4>① 环亚机场贵宾室 Plaza Premium <span class="opt-badge">性价比首选</span></h4>
+          <p style="font-size: 13px; color: #666; margin-bottom: 8px;">任何人可付费进入，HX 旅客首选</p>
+          <ul>
+            <li><strong>位置</strong>：T1 L6 近 1 号闸口 / L6 近 35 号闸口 / L7 近 60 号闸口（3 家）</li>
+            <li><strong>推荐</strong>：近 40 号闸口分店人最少，落地窗看停机坪，拍照绝佳</li>
+            <li><strong>价格</strong>：现场约 HKD 400-600 / 2-3 小时；Klook 提前订约 280 港币</li>
+            <li><strong>设施</strong>：中西式自助餐（招牌鱼蛋粉 Q 弹爽滑）、淋浴间、按摩椅、充电插座、Wi-Fi</li>
+            <li><strong>进入方式</strong>：现场付费 / Priority Pass / 龙腾卡 / 汇丰 Visa Infinite 等信用卡权益</li>
+            <li><strong>营业</strong>：24 小时（热食 6:00-24:00）</li>
+          </ul>
+        </div>
+
+        <div class="layover-option">
+          <h4>② 国泰航空贵宾室 <span class="opt-badge">品质之选</span></h4>
+          <p style="font-size: 13px; color: #666; margin-bottom: 8px;">需商务舱/寰宇一家会员或 Priority Pass</p>
+          <ul>
+            <li><strong>逸连堂 The Deck</strong>（L6 近 35 号闸口）— 2025 年全新翻新重开，2707 平米，523 座，港式奶茶超赞</li>
+            <li><strong>玉衡堂 The Pier</strong>（L6 近 63 号闸口）— 最强餐饮，现煮担担面+面吧，SPA 淋浴间（沐浴包 Aesop），中式茶室</li>
+            <li><strong>寰宇堂 The Wing</strong>（L6 近 1-4 号闸口）— 360° 停机坪景观+自助酒吧，国泰招牌 Cathay Delight</li>
+            <li><strong>进入方式</strong>：国泰/寰宇一家商务舱及以上 / 国泰银卡及以上 / Priority Pass（限 The Deck）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="layover-options" style="margin-top: 12px;">
+        <div class="layover-option">
+          <h4>③ 美国运通 Centurion Lounge <span class="opt-badge">高端体验</span></h4>
+          <p style="font-size: 13px; color: #666; margin-bottom: 8px;">仅限运通白金卡持卡人</p>
+          <ul>
+            <li><strong>位置</strong>：T1 L7 近 60 号闸口</li>
+            <li><strong>特色</strong>：设计感强，餐饮水准高于环亚，通常较安静</li>
+            <li><strong>进入</strong>：AmEx 白金卡/百夫长卡持卡人，可免费带 2 位同行人</li>
+          </ul>
+        </div>
+
+        <div class="layover-option">
+          <h4>④ Kyra Lounge <span class="opt-badge">便捷休息</span></h4>
+          <p style="font-size: 13px; color: #666; margin-bottom: 8px;">Priority Pass 可入</p>
+          <ul>
+            <li><strong>位置</strong>：T1 L6 近 23 号闸口</li>
+            <li><strong>特色</strong>：环境舒适，适合短时间休息，人流较少</li>
+            <li><strong>进入</strong>：Priority Pass / DragonPass / 部分信用卡权益</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box food">
+        <span class="label">💡 休息厅选择建议</span>
+        <strong>有 Priority Pass / 龙腾卡</strong> → 首选国泰逸连堂（The Deck），餐饮和环境最佳<br>
+        <strong>有 AmEx 白金卡</strong> → Centurion Lounge，安静且品质高<br>
+        <strong>无会籍想自费</strong> → 环亚 Plaza Premium（Klook 预订约 280 港币，含餐食+淋浴）<br>
+        <strong>转机时间紧张</strong> → 就近选最近的休息厅，优先吃饭再休息
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label" style="color:#d85a30;">14:30</div>
+        <div class="timeline-content">
+          <h4>HX548 · 香港飞岘港 · 1 小时 50 分</h4>
+          <p>香港航空 HX548，HKG T1 → DAD T2，A321 机型。值机柜台 K 区。飞行约 1 小时 50 分（越南比中国慢 1 小时，当地时间 15:20 抵达）。落地岘港机场后，出关取行李。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box nature">
+      <span class="label">行程衔接</span>
+      HX548 当地时间 15:20 抵达岘港 T2，出关取行李约 30-45 分钟，约 16:00 Grab 打车直奔会安古城。以下 Day 1 傍晚行程从会安开始。
+    </div>
+  </div>
+
+  <!-- ===== Day 1 ===== -->
+  <div class="section">
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge hoi-an">Day<br>1</div>
+        <div>
+          <div class="day-title">7/25(五) HX231 + HX548 → 直奔会安</div>
+          <div class="day-subtitle">07:35 浦东出发，15:20 抵达岘港，傍晚抵达会安</div>
+        </div>
+        <span class="day-phase phase-hoi-an">会安 · 第1晚</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">16:00</div>
+        <div class="timeline-content">
+          <h4>出关取行李 → Grab 直奔会安</h4>
+          <p>HX548 于 15:20 越南时间抵达岘港 T2，出关取行李约 30-40 分钟。Grab 打车直奔会安（约 45 分钟，约 35 万盾 / 100 元）。沿途欣赏沿海公路风光，比先去市区再转方便得多。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">17:00</div>
+        <div class="timeline-content">
+          <h4>入住 Little Residence. A Boutique Hotel & Spa</h4>
+          <p>📍 35 Đào Duy Từ, Cẩm Phô——步行几分钟到日本桥和夜市。葡萄牙式外立面+越南灵魂的精品设计酒店，放下行李稍作休息，黄昏时分的会安光线最美。酒店前台会提供详细的古城游览地图。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">18:00</div>
+        <div class="timeline-content">
+          <h4>古城漫步 · 日本桥 · 各大会馆</h4>
+          <p>傍晚阳光柔和，先逛日本桥（来远桥）、福建会馆、中华会馆。古城保留了 15-19 世纪中日越混合建筑，黄墙黛瓦，三角梅爬满阳台。买一张通票（12 万盾 / 35 元）可参观 5 处古迹。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box food">
+        <span class="label">米其林推荐晚餐</span>
+        <strong>Little Faifo</strong> <span class="michelin-badge michelin-selected">Michelin Selected</span><br>
+        位于古城核心 66 Nguyen Thai Hoc，200年历史老宅改造的现代越南精致餐厅。招牌菜：蟹肉汤、虾肉卷、香蕉叶烤鱼。装修古典奢华，黄灯光配木质家具，氛围感拉满。人均 80-200 元。<br>
+        <em>备选：Morning Glory（会安名厨餐厅）、Mango Mango（河景越南菜）</em>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">19:30</div>
+        <div class="timeline-content">
+          <h4>夜游灯笼街 · 放河灯</h4>
+          <p>天黑后会安古城亮起万千灯笼，秋盆河畔变成"越南版千与千寻"。花 2-3 元买一盏河灯放入河中许愿。沿着陈富街和阮氏明开街漫步，每条巷子都有不同颜色的灯笼挂满头顶。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box tip">
+        <span class="label">实用提醒</span>
+        会安古城每晚 18:00 后进入灯笼区域需另购票（8 万盾 / 24 元），含传统表演和河灯。建议提前在入口买好。
+      </div>
+    </div>
+
+    <!-- ===== Day 2 ===== -->
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge hoi-an">Day<br>2</div>
+        <div>
+          <div class="day-title">7/26(六) 会安深度体验 · 水椰林 · 安邦海滩</div>
+          <div class="day-subtitle">自然 + 人文 + 海滩，松弛的一天</div>
+        </div>
+        <span class="day-phase phase-hoi-an">会安 · 第2晚</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">06:30</div>
+        <div class="timeline-content">
+          <h4>清晨古城漫步（最静谧的会安）</h4>
+          <p>趁游客没来之前，骑行或步行穿过空无一人的古街。晨光打在黄墙上，本地人到河边洗衣、买早餐，这才是真正的会安。推荐在街角吃一碗 Cao Lầu（高楼面）——会安独有的米线，配脆猪皮和本地草药。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">自然美景</span>
+        <strong>水椰林篮子船（Cam Thanh Water Coconut Forest）</strong><br>
+        距古城 4km，乘圆形竹篮船穿梭在水椰林迷宫中。船夫用一支桨划过窄道，中途表演"旋圈绝技"和捕鱼撒网。全程约 1.5 小时，门票约 15-30 元。清晨去人少且光线美。
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">10:00</div>
+        <div class="timeline-content">
+          <h4>水椰林篮子船体验</h4>
+          <p>推荐 Hạnh Coconut 或 Bay Mau 椰林。可含接送+晚餐+放天灯套餐（约 60-80 元）。在林中亲手划船、捞蟹、学做渔网。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">12:00</div>
+        <div class="timeline-content">
+          <h4>午餐 · 高楼面 + 白玫瑰饺</h4>
+          <p>回古城吃午餐。高楼面（Cao Lầu）只有会安才能吃到——粗米粉配烤猪肉、脆猪皮和本地井水制的酱汁。<strong>白玫瑰饺</strong>（White Rose）也是会安独家，半透明虾肉蒸饺，形如白玫瑰。推荐 Trung Bac 或 Minh Hien 等老店。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">自然美景</span>
+        <strong>安邦海滩（An Bang Beach）</strong><br>
+        距古城 4km，会安最近的海滩。比岘港美溪海滩更安静，沙白水清，几乎没有商业化。海边躺椅+椰子+海风=完美的下午。日落时分海面金光，非常适合拍照。
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">14:00</div>
+        <div class="timeline-content">
+          <h4>安邦海滩发呆</h4>
+          <p>Grab 打车 10 分钟到海滩。租一把躺椅（约 5 元），点一杯冰椰子（3 元），看书、游泳、晒太阳。海边的 Soul Kitchen 餐厅有懒人沙发和现场音乐。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">17:00</div>
+        <div class="timeline-content">
+          <h4>返回古城 · 手工体验</h4>
+          <p>可选：定制奥黛（越南传统服饰，24 小时可取，约 150-300 元）、做手工灯笼（约 30-50 元，可带回家做纪念）、或参加半日烹饪课（约 100 元，含市场采购+做菜+吃成果）。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box food">
+        <span class="label">米其林推荐晚餐</span>
+        <strong>Chau Kitchen & Bar</strong> <span class="michelin-badge michelin-selected">Michelin Selected</span><br>
+        位于 141 Tran Phu，百年老屋内。招牌菜 <strong>Iron Beefsteak（铁板牛排）</strong>——灵感来自越南传统铸铁熨斗，牛排在热铁板上滋滋作响，肉质多汁甘甜。融合菜系，配招牌鸡尾酒。人均 80-150 元。<br>
+        <em>备选：Mango Mango（河景露台越南菜）、Nu Eatery（创意越南小馆）</em>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">20:00</div>
+        <div class="timeline-content">
+          <h4>二刷灯笼街 · 夜游秋盆河</h4>
+          <p>第二晚可以换个角度体验——坐小船游秋盆河（约 10 元），从水上看两岸灯笼倒影，别有一番风味。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Phase 2 Header ===== -->
+  <div style="background: #e1f5ee; padding: 30px 30px 10px; text-align: center;">
+    <h2 style="font-size: 20px; color: #085041; margin-bottom: 4px;">Phase 2 · 岘港 Wink Hotel Danang Centre（7/27-7/29，住3晚）</h2>
+    <p style="font-size: 14px; color: #0f6e56;">住 Wink Hotel Danang Centre（178 Tran Phu），步行180米到粉红教堂、400米到韩市场、650米到龙桥</p>
+  </div>
+
+  <!-- ===== Day 3 ===== -->
+  <div class="section" style="padding-top: 20px;">
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge danang">Day<br>3</div>
+        <div>
+          <div class="day-title">7/27(日) 会安退房 → 五行山探洞 → 入住 Wink Hotel</div>
+          <div class="day-subtitle">转场顺路游五行山，下午开始探索岘港市区</div>
+        </div>
+        <span class="day-phase phase-danang">岘港 · 第1晚</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">08:30</div>
+        <div class="timeline-content">
+          <h4>会安退房 · 最后早餐</h4>
+          <p>在古城吃最后一碗 Banh Mi（越南法棍三明治），推荐 Banh Mi Phuong（名人效应老店）。退房后 Grab 出发，约 30 分钟到五行山。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">自然美景</span>
+        <strong>五行山（Marble Mountains / Ngũ Hành Sơn）</strong><br>
+        五座石灰岩山峰代表金木水火土五行。主峰水山内有天然溶洞——华严洞、玄空洞，洞中建有佛塔和佛像，光线从洞顶缝隙洒下，神秘壮观。山顶可俯瞰海岸线全景。门票 4 万盾（12 元），电梯另付 1.5 万盾。<br>
+        <em>建议游览 2-2.5 小时，穿防滑鞋，洞内石阶较陡。</em>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">09:30</div>
+        <div class="timeline-content">
+          <h4>五行山 · 水山溶洞探秘</h4>
+          <p>五行山正好在会安和岘港之间（半路），转场时停一下最合理。登水山入华严洞，看巨大的天然石笋和洞中佛塔。山顶可观海，天气好时视野极佳。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">12:00</div>
+        <div class="timeline-content">
+          <h4>前往岘港 · 入住 Wink Hotel Danang Centre</h4>
+          <p>从五行山到 Wink Hotel 约 20 分钟车程。Check in 后稍作休息。Wink Hotel 在 178 Tran Phu St，下楼步行 400 米就是韩市场。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">14:00</div>
+        <div class="timeline-content">
+          <h4>韩市场（Han Market）闲逛</h4>
+          <p>下楼就是韩市场——岘港最热闹的室内市场。一楼卖生鲜水果干果，二楼卖丝绸、奥黛、伴手礼。可以买芒果干、腰果、咖啡豆（价格比外面便宜 30%）。大胆砍价，从半价开始。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">15:30</div>
+        <div class="timeline-content">
+          <h4>粉红教堂（岘港大教堂）</h4>
+          <p>从韩市场步行 3 分钟即到。1923 年法国人建的粉色哥特式教堂，阳光下非常出片。教堂内可参观，保持安静即可。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box food">
+        <span class="label">米其林推荐晚餐</span>
+        <strong>Bún Chả Cá 109</strong> <span class="michelin-badge michelin-bib">Bib Gourmand</span><br>
+        岘港名物<strong>鱼饼米粉</strong>——浓郁的鱼汤底配弹牙鱼饼、番茄、冬瓜，一碗约 12-15 元。这家是本地人吃了多年的老店，汤鲜鱼饼嫩。<br>
+        地址：109 Nguyen Chi Thanh, Hai Chau（距韩市场约 1.5km）<br>
+        <em>备选：Bún Chả Cá Hòn（同获 Bib Gourmand，另一家鱼饼米粉名店）</em>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">17:30</div>
+        <div class="timeline-content">
+          <h4>韩江漫步 · 龙桥夜景</h4>
+          <p>傍晚沿韩江步道散步，龙桥（Dragon Bridge）是岘港地标。如果是周六/周日晚 21:00，龙桥有喷火喷水表演。韩江上的旋桥（Song Han Bridge）每晚 1:00 旋转打开让船只通过。河边有很多咖啡馆和酒吧。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Day 4 ===== -->
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge danang">Day<br>4</div>
+        <div>
+          <div class="day-title">7/28(一) 巴拿山 · 法式仙境一日游</div>
+          <div class="day-subtitle">穿越云海的世界最长缆车 + 巨手金桥</div>
+        </div>
+        <span class="day-phase phase-danang">岘港 · 第2晚</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">07:30</div>
+        <div class="timeline-content">
+          <h4>出发前往巴拿山</h4>
+          <p>从韩市场出发约 1 小时车程。建议提前在 Klook/KKTicker 买好套票（含缆车+金桥+法国村+自助午餐，约 250-280 元）。工作日去人少，周末排队可能 1-2 小时。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">自然美景</span>
+        <strong>世界最长单缆索道 · 穿越云海</strong><br>
+        巴拿山缆车全长 5.8km，曾获吉尼斯世界纪录。从山脚到山顶穿越三层云雾，气温骤降 10 度以上，从闷热直接进入清凉仙境。沿途俯瞰原始森林和远处海岸线，缆车本身就是一场视觉盛宴。
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">09:00</div>
+        <div class="timeline-content">
+          <h4>巨手金桥（Golden Bridge）</h4>
+          <p>两只巨大的石手从山中托起金色步道，2018 年建成后刷爆全网。早上光线最好，云雾缭绕时如走天路。建议一上山先冲金桥拍照，避开旅行团。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">10:30</div>
+        <div class="timeline-content">
+          <h4>法国村（French Village）</h4>
+          <p>山顶复刻了一整座法式中世纪小镇：石板路、哥特教堂、喷泉广场、花圃。漫步其间如置身阿尔卑斯山。还有灵应寺、酒窖可参观。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">12:00</div>
+        <div class="timeline-content">
+          <h4>山顶自助午餐</h4>
+          <p>套票含自助餐，菜品种类丰富，越式+西式+中式都有。在山顶餐厅边吃边看云海翻涌。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">13:30</div>
+        <div class="timeline-content">
+          <h4>幻想公园（Fantasy Park）</h4>
+          <p>室内游乐园，有过山车、3D 影院、攀岩等。不想刺激项目可以在花园散步、山顶咖啡馆喝滴漏咖啡看云海。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">15:30</div>
+        <div class="timeline-content">
+          <h4>缆车下山 · 返回岘港</h4>
+          <p>下山缆车同样壮观，下午光线不同，云层变化更丰富。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box food">
+        <span class="label">米其林推荐晚餐</span>
+        <strong>Bé Mặn</strong> <span class="michelin-badge michelin-bib">Bib Gourmand</span><br>
+        岘港传奇海鲜餐厅，以新鲜海鲜和合理价格入选 Bib Gourmand。椒盐虾、蒜蓉扇贝、烤鱼都是招牌。海鲜现选现做，价格远低于国内海鲜餐厅。<br>
+        地址：Lot 9, Vo Nguyen Giap, Sơn Trà（美溪海滩旁）· ☎ +84 90 520 7848<br>
+        人均 80-120 元。<br>
+        <em>备选：Mộc <span class="michelin-badge michelin-selected">Michelin Selected</span>（26 To Hien Thanh, 海鲜水缸现选，龙虾蒜蓉黄油做法最佳，需预订）</em>
+      </div>
+    </div>
+
+    <!-- ===== Day 5 ===== -->
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge danang">Day<br>5</div>
+        <div>
+          <div class="day-title">7/29(二) 山茶半岛 + 海云岭 + 灵姑湾 · 山海海岸线</div>
+          <div class="day-subtitle">全天自然美景：原始林 · 观音像 · 最美沿海公路 · 白沙滩</div>
+        </div>
+        <span class="day-phase phase-danang">岘港 · 第3晚</span>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">自然美景 · 山茶半岛</span>
+        <strong>山茶半岛（Son Tra Peninsula / Bán Đảo Sơn Trà）</strong><br>
+        岘港东北的原始半岛，保留大量原生热带雨林。山顶有 67 米高的白玉观音像（东南亚最高），俯瞰整个岘港海湾和美溪海滩。山中有野生叶猴群。沿海公路一侧青山一侧碧海，号称"越南最美海岸线"之一。免费。
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">07:30</div>
+        <div class="timeline-content">
+          <h4>山茶半岛 · 灵应寺 · 观音像</h4>
+          <p>从韩市场出发约 25 分钟。先到灵应寺看 67 米观音像，站在像下俯瞰岘港全城和海湾。沿海公路继续往上走有几个观景台，可以看到月牙形的美溪海滩全景。运气好能遇到野生猴群。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">09:30</div>
+        <div class="timeline-content">
+          <h4>千年榕树 · 原始林步道</h4>
+          <p>山中有千年榕树（Banyan Tree），树根盘踞如巨龙。沿林间步道走走，空气清冽。如果时间紧可以跳过直接去海云岭。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">自然美景 · 海云岭</span>
+        <strong>海云岭（Hải Vân Pass）</strong><br>
+        被誉为"越南最美沿海公路"，也是 Top Gear 评选的"世界最美海滨公路"之一。山海之间蜿蜒盘旋，一面翠绿山峦，一面碧蓝大海，每个弯道都是大片。山顶海云关有古城墙遗迹，可俯瞰灵姑湾全景。BBC 评为"人生必去 50 地"之一。
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">10:30</div>
+        <div class="timeline-content">
+          <h4>海云岭 · 最美沿海公路</h4>
+          <p>从山茶半岛沿海岸线北上，约 40 分钟到海云岭山脚。盘山公路约 21km，沿途多个观景台可停车拍照。山顶海云关是古代军事关隘，站在城墙边俯瞰，一侧是灵姑湾的蓝绿海水，一侧是向北延伸的海岸线，壮丽无比。</p>
+          <p><em>建议包车（约 200-300 元/天）或骑摩托车前往，山路弯多需注意安全。</em></p>
+        </div>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">自然美景 · 灵姑湾</span>
+        <strong>灵姑湾 / 灵姑海滩（Lăng Cô Bay）</strong><br>
+        翻过海云岭下山就是灵姑湾——BBC 评"人生必去 50 地"之一。三面环山一面临海的月牙形海湾，白沙滩细腻，海水碧绿通透。游客稀少，有渔村和养蠔场，保留着原始宁静。比岘港美溪海滩人少景更美。
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">12:00</div>
+        <div class="timeline-content">
+          <h4>灵姑湾 · 海鲜午餐 + 白沙滩</h4>
+          <p>在海边渔村餐厅吃最新鲜的海鲜——灵姑湾以生蠔（牡蛎）闻名，直接从养殖场到餐桌。烤蠔、蒸蟹、炒虾，一顿海鲜大餐约 50-80 元/人。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">13:30</div>
+        <div class="timeline-content">
+          <h4>灵姑湾白沙滩发呆</h4>
+          <p>午餐后在白沙滩上休息。这里几乎没游客，海水清澈见底，远处青山如黛。租个沙滩椅（5 元），发呆、游泳、拍照。这才是度假该有的样子。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">15:30</div>
+        <div class="timeline-content">
+          <h4>返回岘港 · 途经美溪海滩</h4>
+          <p>沿海公路原路返回，途经美溪海滩（My Khe Beach）可停车看日落。美溪海滩被 Forbes 评为"世界六大最美海滩"之一，沙细如粉。虽然住市区，但来一趟打个卡、吹个海风还是值得的。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box food">
+        <span class="label">米其林推荐晚餐 · 需提前预订</span>
+        <strong>Nén Danang</strong> <span class="michelin-badge michelin-green">Michelin Green Star</span><br>
+        岘港唯一米其林绿色之星——以可持续食材和创意越南料理闻名。单一套餐制（每几个月更换一次），每道菜附手绘卡片讲解灵感。主厨 Summer Le 的创意作品，如诗如画。配餐酒/清酒 pairing。<br>
+        地址：16 My Da Tay 2, Ngu Hanh Son。需提前在官网预订。人均 200-350 元。<br>
+        <em>如未订到，备选：La Maison 1888 <span class="michelin-badge michelin-star">1 Star</span>（InterContinental Danang, Bãi Bắc, Sơn Trà半岛，法式 fine dining，5/8 道式套餐，人均 400-800 元，需乘酒店缆车上山，也需预订 ☎ +84 236 3938 888）</em>
+      </div>
+    </div>
+
+    <!-- ===== Phase 3 Header ===== -->
+  <div style="background: #e6f1fb; padding: 30px 30px 10px; text-align: center;">
+    <h2 style="font-size: 20px; color: #185fa5; margin-bottom: 4px;">Phase 3 · 胡志明 Saigon Hotel（7/30-8/1，住2晚）</h2>
+    <p style="font-size: 14px; color: #185fa5;">住 Saigon Hotel（8 Dong Khoi St, District 1），法式殖民风，步行5分钟到歌剧院、8分钟到滨城市场</p>
+  </div>
+
+  <!-- ===== Day 6 ===== -->
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge depart">Day<br>6</div>
+        <div>
+          <div class="day-title">7/30(三) 岘港告别 → VN7141 飞胡志明 → 西贡初夜</div>
+          <div class="day-subtitle">上午韩市场收尾，中午飞胡志明，下午抵达开启西贡之旅</div>
+        </div>
+        <span class="day-phase phase-saigon">胡志明 · 第1晚</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">06:30</div>
+        <div class="timeline-content">
+          <h4>最后一碗米粉 · 滴漏咖啡</h4>
+          <p>在 Wink Hotel 楼下或韩市场附近吃一碗 Pho（越南河粉），配一杯冰滴漏咖啡。这一碗可能只要 10-12 元，却是岘港最越南的味道。</p>
+        </div>
+      </div>
+
+      <div class="highlight-box food">
+        <span class="label">米其林推荐早餐</span>
+        <strong>Bún Riêu Cua 39</strong> <span class="michelin-badge michelin-selected">Michelin Selected</span><br>
+        <strong>蟹肉米粉汤</strong>——浓郁蟹汤底配三种鱼饼、蟹肉和香蕉叶包猪肉肠。只开早午 6:00-14:00。<br>
+        📍 39 Le Hong Phong, Hai Chau（距 Wink Hotel 约 1.5km）
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">08:00</div>
+        <div class="timeline-content">
+          <h4>韩市场采购伴手礼 · 退房</h4>
+          <p>最后一趟韩市场扫货：芒果干、腰果、G7 咖啡、绿豆糕、鱼露、灯笼小摆件。记得砍价，从 6 折开始谈。回 Wink Hotel 退房。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">08:30</div>
+        <div class="timeline-content">
+          <h4>Grab 前往岘港机场</h4>
+          <p>Wink Hotel 到岘港机场仅 3km，打车约 8 分钟。建议 08:30 出发，09:00 前到达机场。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">10:10</div>
+        <div class="timeline-content">
+          <h4>VN7141 · 越南航空 飞胡志明</h4>
+          <p>VN7141，DAD T1 → SGN T3（新山一机场），A321 机型，飞行约 1 小时 20 分钟，约 11:30 抵达胡志明。<br>
+          <em>注：航班时刻因日期而异，请出行前在越南航空官网确认。</em></p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">12:00</div>
+        <div class="timeline-content">
+          <h4>抵达胡志明新山一机场 → Grab 前往 Saigon Hotel</h4>
+          <p>出关取行李后 Grab 打车到 Saigon Hotel（8 Dong Khoi St, District 1），约 7.9km，20-30 分钟，约 15-20 万盾（50-70 元）。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">13:00</div>
+        <div class="timeline-content">
+          <h4>入住 Saigon Hotel · 午餐</h4>
+          <p>入住法式殖民风酒店，放下行李。到楼下同起街找一家越南法棍三明治（Bánh Mì）做午餐，约 15-25 元。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">14:30</div>
+        <div class="timeline-content">
+          <h4>红教堂 · 中央邮局 · 西贡歌剧院 CityWalk</h4>
+          <p>从酒店步行出发，第一站<strong>西贡圣母大教堂</strong>（红教堂，Duong Cong Xa Paris）——1880年法式新罗马风格红砖教堂。隔壁<strong>中央邮局</strong>（Buu Dien Sai Gon）——艾菲尔铁塔设计师作品，内有复古电话亭和世界地图地砖。沿同起街南行到<strong>西贡歌剧院</strong>（Nha Hat Thanh Pho）——1900年法式建筑，可看一场 AO Show（约150-300元）。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">17:00</div>
+        <div class="timeline-content">
+          <h4>阮惠步行街 · 咖啡公寓</h4>
+          <p>走到<strong>阮惠步行街</strong>（Nguyen Hue Walking Street），这是胡志明最美的步行大道。打卡<strong>咖啡公寓</strong>（42 Nguyen Hue）——一栋9层老公寓改造的咖啡馆群，每层不同风格，露台可俯瞰步行街。推荐 The Workshop Specialty Coffee（4楼）或 Saigon Oi（6楼）。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">19:00</div>
+        <div class="timeline-content">
+          <h4>晚餐 · Ănăn Saigon（米其林一星）</h4>
+          <p>步行至<strong>Ănăn Saigon</strong> <span class="michelin-badge michelin-star">1 Star</span>——主厨 Peter Cuong Franklin 将越南街头美食用现代技法重新演绎。招牌：鹅肝春卷、河内姜黄鱼、和牛迷你 Bánh Mì。<br>
+          📍 89 Ton That Dam St, Ben Nghe, District 1（距酒店步行10分钟）· 需预订 · 人均 300-500 元</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">21:00</div>
+        <div class="timeline-content">
+          <h4>西贡河夜景散步 · 金融塔观景台</h4>
+          <p>饭后沿<strong>西贡河</strong>（Saigon River）散步，吹吹热带晚风。可选登<strong>Bitexco 金融塔</strong>观景台（49层，门票约 80 元），360° 俯瞰西贡夜景。回酒店休息。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Day 7 ===== -->
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge saigon">Day<br>7</div>
+        <div>
+          <div class="day-title">7/31(四) 胡志明深度游 · 湄公河三角洲 · 西贡河游船</div>
+          <div class="day-subtitle">上午自然美景（湄公河），下午历史人文，晚上游船晚餐</div>
+        </div>
+        <span class="day-phase phase-saigon">胡志明 · 第2晚</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">07:00</div>
+        <div class="timeline-content">
+          <h4>早餐 · Cơm Tấm Ba Ghiền（米其林 Bib Gourmand）</h4>
+          <p>西贡国民早餐<strong>碎米饭</strong>（Cơm Tấm）——烤排骨 + 碎米饭 + 蔥油 + 猪皮丝 + 鱼露，豪爽浓郁。<br>
+          📍 84 Dang Van Ngu, Ward 10, Phu Nhuan District · 6:00 开门 · 人均 20-30 元</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">08:00</div>
+        <div class="timeline-content">
+          <h4>🚤 湄公河三角洲一日游（半日）· 美拖 My Tho</h4>
+          <p>从酒店出发约 1.5 小时车程到<strong>美拖（My Tho）</strong>——湄公河入海前的最后一段。这是越南最壮观的自然水乡景观。<br>
+          乘手摇船穿过<strong>水椰林水道</strong>，两岸椰林遮天蔽日，水面上漂浮着凤眼蓝；参观<strong>龙岛（Dragon Island）</strong>水果果园，品尝热带水果+蜂蜜茶；看传统椰子糖制作手艺；在河边餐厅品尝<strong>象耳鱼</strong>（Elephant Ear Fish）——湄公河特产，整条炸酥后卷米纸吃。<br>
+          <em>建议报当地一日游团（约 100-200 元/人，含车+船+午餐+导游），可在 Klook 或酒店前台预订。下午 15:00 左右返回胡志明。</em></p>
+        </div>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">🌿 自然美景 · 湄公河三角洲</span>
+        湄公河三角洲是越南最大的河流三角洲，面积相当于整个比利时。水道纵横、椰林密布、果林飘香，是感受越南南部水乡生活的最佳目的地。BBC 和国家地理均将其列为"一生必去"的自然景观。
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">15:30</div>
+        <div class="timeline-content">
+          <h4>返回胡志明 · 战争遗迹博物馆</h4>
+          <p>回到市区后前往<strong>战争遗迹博物馆</strong>（Bảo Tàng Chứng Tích Chiến Tranh）——记录越战历史的震撼博物馆，展有橙剂影响照片、虎笼牢房、武器装备。强烈而沉重的体验。门票约 4 万盾（12 元）。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">17:00</div>
+        <div class="timeline-content">
+          <h4>统一宫 · 粉红教堂拍照</h4>
+          <p>步行到<strong>统一宫</strong>（Dinh Thống Nhất）——前南越总统府，1960年代建筑，内有作战地下室和总统直升飞机停机坪。门票约 6.5 万盾（20 元）。<br>
+          顺路打卡<strong>耶稣圣心堂</strong>（粉红教堂，Tan Dinh Church）——通体粉色的天主教堂，少女心爆棚，黄昏光线最佳。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">19:00</div>
+        <div class="timeline-content">
+          <h4>🚢 西贡河游船晚餐</h4>
+          <p>到<strong>巴赫当码头</strong>（Bach Dang Wharf）登船，<strong>西贡河夜游</strong>+ 晚餐。沿河看两岸灯火璀璨，途经 Bitexco 金融塔和西贡大桥。船上有多国料理自助或越式套餐，配现场音乐表演。<br>
+          💰 游船+晚餐约 150-300 元/人 · 19:00-21:00 · 建议提前在 Klook 预订</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">21:30</div>
+        <div class="timeline-content">
+          <h4>范五老街夜生活（可选）· 回酒店</h4>
+          <p>想体验夜生活可到<strong>范五老街</strong>（Pham Ngu Lao）——背包客天堂，酒吧街、摩托大军、霓虹闪烁。喝一杯 Bia Saigon（西贡啤酒）约 10 元。不想热闹就直接回 Saigon Hotel 休息。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Day 8 ===== -->
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge saigon">Day<br>8</div>
+        <div>
+          <div class="day-title">8/1(五) 古芝地道 · 滨城市场 · 米其林告别晚宴</div>
+          <div class="day-subtitle">上午自然+历史探险，下午购物SPA，晚上米其林fine dining后赴机场</div>
+        </div>
+        <span class="day-phase phase-saigon">胡志明 · 退房日</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">07:30</div>
+        <div class="timeline-content">
+          <h4>早餐 · Phở Lệ（米其林 Bib Gourmand）</h4>
+          <p>70年老店<strong>南越河粉</strong>——浓郁牛骨汤底配半熟牛肉片，南越风味偏甜，加九层塔和豆芽。被认为是胡志明最好的 Phở 之一。<br>
+          📍 14 Le Quy Don, Ward 6, District 3 · 6:00-22:00 · 人均 15-25 元</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">08:30</div>
+        <div class="timeline-content">
+          <h4>🚜 古芝地道半日游 · 地下迷宫探险</h4>
+          <p>从酒店出发约 1.5 小时车程到<strong>古芝地道</strong>（Củ Chi Tunnels）——越战时期游击队挖建的地下250公里隧道网络，被誉为"世界最不可思议的军事工程"。<br>
+          体验钻入真实地道（有扩大版和原始版可选），参观陷阱展示、厨房伪装设施、武器制造间。地道内温度比地面低10度，弯腰或匍匐前行，感受战时生活。<br>
+          <em>建议报半日游团（约 80-150 元/人，含车+导游+门票），可在 Klook 预订。中午 12:00 左右返回市区。</em></p>
+        </div>
+      </div>
+
+      <div class="highlight-box nature">
+        <span class="label">🌿 自然与历史</span>
+        古芝地道隐藏在茂密热带丛林中，周围是橡胶林和柬埔寨风味的乡村风光。地道上方覆盖着伪装植被，从空中完全看不出痕迹。景区保留了原始丛林生态，蝴蝶和鸟类众多，是自然与历史交织的独特体验。
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">12:30</div>
+        <div class="timeline-content">
+          <h4>午餐 · Bánh Xèo 46A（米其林 Bib Gourmand）</h4>
+          <p>Anthony Bourdain 推荐过的<strong>越南煎饼</strong>（Bánh Xèo）——金黄酥脆的米浆煎饼裹虾仁、猪肉和豆芽，用米纸包裹蘸鱼露吃。 crispy on the outside, tender inside。<br>
+          📍 46A Đinh Công Tráng, Tan Dinh Ward, District 1 · 9:00-21:00 · 人均 30-50 元</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">14:00</div>
+        <div class="timeline-content">
+          <h4>滨城市场 · 最后采购</h4>
+          <p><strong>滨城市场</strong>（Chợ Bến Thành）——胡志明最大最著名的室内市场，Clock Tower 大钟楼是城市地标。采购伴手礼：越南咖啡（Trung Nguyen/G7）、腰果、芒果干、鱼露、斗笠、奥黛、漆器、热带水果干。<br>
+          记得砍价，一般从 5 折开始谈。市场内还有美食街，可以最后吃一碗 Bún Bò Huế 或春卷。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">16:00</div>
+        <div class="timeline-content">
+          <h4>SPA 按摩 · 旅途最后一站放松</h4>
+          <p>9天旅行走到尾声，安排一场越南式按摩放松身心。推荐：<br>
+          <strong>Miên Spa</strong> <span class="michelin-badge michelin-selected">Michelin Selected</span>——米其林推荐餐厅附设的SPA，环境优雅。<br>
+          <strong>Annam Spa</strong>——专业越南传统按摩，90分钟全身约 150-250 元。<br>
+          <strong>Saigon Spa</strong>——靠近同起街，足底+全身套餐性价比高。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">18:30</div>
+        <div class="timeline-content">
+          <h4>🌟 米其林告别晚宴 · CieL（米其林一星·2025新晋）</h4>
+          <p>2025年胡志明最新晋米其林一星餐厅，主厨将<strong>法式烹饪技法与越南本地食材</strong>融合——前菜可能是湄公河三角洲的淡水鱼配发酵酸角酱，主菜用中部山区的香草烹饪鸭胸。餐厅位于高级法式建筑内，氛围精致浪漫。<br>
+          📍 50 6/3 Street, Thao Dien, Thu Duc City · 需提前预订 · 套餐 500-900 元/人<br>
+          <em>备选：Coco Dining <span class="michelin-badge michelin-star">1 Star</span>（当代越南+发酵技法，同样需预订，人均 400-700 元）</em></p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">21:00</div>
+        <div class="timeline-content">
+          <h4>回酒店收拾行李 · 退房</h4>
+          <p>晚餐后回 Saigon Hotel 收拾行李，办理退房。前台寄存行李，最后确认航班信息。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Day 9 ===== -->
+    <div class="day-card">
+      <div class="day-header">
+        <div class="day-badge depart">Day<br>9</div>
+        <div>
+          <div class="day-title">8/2(六) 凌晨返程 · HO1328 飞浦东</div>
+          <div class="day-subtitle">红眼航班直飞上海，早上抵达浦东</div>
+        </div>
+        <span class="day-phase phase-danang">返程</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">22:30<br><span style="font-size:11px;color:#999;">Day 8</span></div>
+        <div class="timeline-content">
+          <h4>Grab 前往新山一机场</h4>
+          <p>Day 8 晚上收拾完行李退房后出发。Saigon Hotel 到新山一机场（SGN T2）约 7.9km，夜间打车约 20-30 分钟。建议 22:30 出发，23:00 前到达机场。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label">23:00<br><span style="font-size:11px;color:#999;">Day 8</span></div>
+        <div class="timeline-content">
+          <h4>新山一机场 T2 · 值机</h4>
+          <p>HO1328 登机柜台 I2-I4（经济舱），值机于 00:30 关闭。吉祥航空 A321 机型，164 座。建议提前在线值机选座。机场 T2 有 24 小时餐厅和免税店。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label" style="color:#d85a30;">01:20</div>
+        <div class="timeline-content">
+          <h4>HO1328 · 吉祥航空 起飞 → 飞浦东</h4>
+          <p><strong>HO1328</strong>，SGN T2 → PVG T2，A321 机型，飞行约 4 小时 10 分钟。红眼航班，机上休息。</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-label" style="color:#d85a30;">06:30</div>
+        <div class="timeline-content">
+          <h4>抵达上海浦东 T2 · 行程结束</h4>
+          <p>越南比中国慢 1 小时，抵达浦东约北京时间 06:30。取行李后乘地铁2号线/磁悬浮/出租车回家。9天越南三城之旅圆满结束！🇻🇳</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Michelin Restaurant Guide ===== -->
+  <div class="section">
+    <h2><span class="icon">⭐</span> 米其林美食指南 · 2025年完整收录</h2>
+    <p class="sec-desc">2025年米其林指南收录岘港+胡志明，以下为本次行程覆盖的全部米其林推荐餐厅</p>
+
+    <div class="michelin-section">
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #a32d2d;">⭐ 一星餐厅</h3>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>La Maison 1888 <span class="michelin-badge michelin-star">1 Star</span></h4>
+          <div class="meta">InterContinental Danang, Bãi Bắc, Sơn Trà半岛 · ☎ +84 236 3938 888 · 每日 18:30-21:00</div>
+          <p>法式高级餐厅，坐落山腰殖民风宅邸。5/8 道式套餐，精选越法日食材。招牌意大利面焗烤配松露酱。需乘酒店缆车上山。</p>
+        </div>
+        <div class="michelin-price">400-800<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+    </div>
+
+    <div class="michelin-section">
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #3b6d11;">🌱 绿色之星</h3>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Nén Danang <span class="michelin-badge michelin-green">Green Star</span></h4>
+          <div class="meta">16 My Da Tay 2, Ngu Hanh Son · 需官网预订</div>
+          <p>可持续食材 + 创意越南料理。单一套餐制，每道菜附手绘灵感卡片。主厨 Summer Le 作品如诗如画。配酒/清酒 pairing。</p>
+        </div>
+        <div class="michelin-price">200-350<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+    </div>
+
+    <div class="michelin-section">
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #854f0b;">🥇 必比登推荐 Bib Gourmand（高品质平价）</h3>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bún Chả Cá 109 <span class="michelin-badge michelin-bib">Bib</span></h4>
+          <div class="meta">109 Nguyen Chi Thanh, Hai Chau</div>
+          <p>岘港名物鱼饼米粉，浓鱼汤底配弹牙鱼饼、番茄冬瓜。一碗幸福感爆棚。</p>
+        </div>
+        <div class="michelin-price">12-15<br><span style="font-size:11px;color:#999">元/碗</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bé Mặn <span class="michelin-badge michelin-bib">Bib</span></h4>
+          <div class="meta">Lot 9, Vo Nguyen Giap, Sơn Trà（美溪海滩）· ☎ +84 90 520 7848 · 09:00-24:00</div>
+          <p>传奇海鲜店，现选现做。椒盐虾、蒜蓉扇贝、烤鱼。价格远低于国内同类。</p>
+        </div>
+        <div class="michelin-price">80-120<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Quê Xưa <span class="michelin-badge michelin-bib">Bib · 新增2025</span></h4>
+          <div class="meta">1165-167 Nui Thanh, Hai Chau · 06:00-22:30</div>
+          <p>稻草吊灯+乡土画装饰。专做两道菜：Mỳ Quảng（广南米粉）和 Bánh Thịt Heo（猪肉饼）。中部越南味道的极致。</p>
+        </div>
+        <div class="michelin-price">15-25<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bánh Xèo 76 <span class="michelin-badge michelin-bib">Bib · 新增2025</span></h4>
+          <div class="meta">85A Le Van Huu, Ngu Hanh Son · 10:00-21:00</div>
+          <p>门口炭火烤猪肉，越南煎饼（Bánh Xèo）配米纸卷着吃，还有玉米卷和烤肉米粉。</p>
+        </div>
+        <div class="michelin-price">15-30<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bún Bò Huế Bà Thương <span class="michelin-badge michelin-bib">Bib · 新增2025</span></h4>
+          <div class="meta">23 Tran Quoc Toan, Hai Chau · 06:00-11:00</div>
+          <p>50年老店，顺化风味辣牛肉米粉。香茅浓汤底，牛肉嫩、粉弹牙。只开早上。</p>
+        </div>
+        <div class="michelin-price">12-15<br><span style="font-size:11px;color:#999">元/碗</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Shamballa <span class="michelin-badge michelin-bib">Bib · 新增2025</span></h4>
+          <div class="meta">277 Tran Hung Dao, Son Tra · 10:00-22:00</div>
+          <p>藏在古木门后的素食秘境，藏式装饰+越南风味植物料理。禅意满满。</p>
+        </div>
+        <div class="michelin-price">40-70<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+    </div>
+
+    <div class="michelin-section">
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #185fa5;">🔵 米其林推荐 Michelin Selected</h3>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bún Riêu Cua 39 <span class="michelin-badge michelin-selected">Selected · 新增2025</span></h4>
+          <div class="meta">39 Le Hong Phong, Hai Chau · 06:00-14:00（周六11:00收）</div>
+          <p>大树下的小店，蟹肉米粉汤浓郁鲜甜，配三种鱼饼和香蕉叶猪肉肠。只做早午餐。</p>
+        </div>
+        <div class="michelin-price">12-18<br><span style="font-size:11px;color:#999">元/碗</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Mộc <span class="michelin-badge michelin-selected">Selected · 新增2025</span></h4>
+          <div class="meta">26 To Hien Thanh, Son Tra · 10:30-22:30</div>
+          <p>东南亚风情海鲜，水缸现选。龙虾蒜蓉黄油做法最佳。需预订。仙灯装饰氛围好。</p>
+        </div>
+        <div class="michelin-price">100-200<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bếp Cuốn <span class="michelin-badge michelin-selected">Selected · 新增2025</span></h4>
+          <div class="meta">31-33 Tran Bach Dang, Son Tra · 13:00-21:00</div>
+          <p>灯笼竹饰庭院餐厅，招牌 Mẹt Bếp Cuốn 拼盘含四种小吃配鱼露和罗望子酱。适合初次游客。</p>
+        </div>
+        <div class="michelin-price">40-70<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Little Faifo（会安） <span class="michelin-badge michelin-selected">Selected</span></h4>
+          <div class="meta">66 Nguyen Thai Hoc, Hoi An · 07:00-22:00</div>
+          <p>200年老宅改造，现代越南精致料理。蟹肉汤、虾肉卷、香蕉叶烤鱼。配酒精致。</p>
+        </div>
+        <div class="michelin-price">80-200<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Chau Kitchen & Bar（会安） <span class="michelin-badge michelin-selected">Selected</span></h4>
+          <div class="meta">141 Tran Phu, Hoi An · 08:30-22:30</div>
+          <p>百年老屋内，招牌 Iron Beefsteak 铁板牛排。融合菜+鸡尾酒+精选葡萄酒。</p>
+        </div>
+        <div class="michelin-price">80-150<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+    </div>
+
+    <!-- ===== HCMC Michelin ===== -->
+    <div class="michelin-section" style="margin-top: 28px; border-top: 2px dashed #e5e2da; padding-top: 20px;">
+      <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #185fa5;">🏙️ 胡志明市米其林餐厅</h3>
+      <p style="font-size: 13px; color: #888; margin-bottom: 16px;">2025年胡志明市有5家一星、大量Bib Gourmand和Selected，以下为行程推荐</p>
+
+      <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #a32d2d;">⭐ 一星餐厅</h4>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Ănăn Saigon <span class="michelin-badge michelin-star">1 Star</span></h4>
+          <div class="meta">📍 89 Ton That Dam St, Ben Nghe, District 1 · ☎ +84 90 479 2920 · 需预订</div>
+          <p>主厨 Peter Cuong Franklin 将越南街头美食用现代技法重塑。招牌：鹅肝春卷、河内姜黄鱼、和牛迷你 Bánh Mì。Day 6 晚餐安排。</p>
+        </div>
+        <div class="michelin-price">300-500<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>CieL <span class="michelin-badge michelin-star">1 Star · 新增2025</span></h4>
+          <div class="meta">📍 50 6/3 Street, Thao Dien Ward, Thu Duc City · ☎ +84 90 360 0505</div>
+          <p>2025年新晋一星！藏在 Thao Dien 现代别墅中，法式技法+越南灵魂。主厨黎越鸿获2025年最佳青年主厨奖。鱼鳔菜是招牌。</p>
+        </div>
+        <div class="michelin-price">500-800<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Coco Dining <span class="michelin-badge michelin-star">1 Star · 升级2025</span></h4>
+          <div class="meta">📍 District 1, Ho Chi Minh City · 需预订</div>
+          <p>2025年从Selected升为一星。主厨 Thanh Vuong Vo 的当代越南菜，融合发酵技法与现代呈现。</p>
+        </div>
+        <div class="michelin-price">400-600<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <h4 style="font-size: 16px; font-weight: 700; margin: 20px 0 12px; color: #854f0b;">🥇 必比登 Bib Gourmand</h4>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Cơm Tấm Ba Ghiền <span class="michelin-badge michelin-bib">Bib</span></h4>
+          <div class="meta">📍 84 Dang Van Ngu, Ward 10, Phu Nhuan District · 06:00-21:00</div>
+          <p>西贡国民碎米饭！烤排骨+碎米饭+蔥油+猪皮丝+鱼露，豪爽浓郁。Day 7 早餐安排。</p>
+        </div>
+        <div class="michelin-price">20-30<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bánh Xèo 46A <span class="michelin-badge michelin-bib">Bib</span></h4>
+          <div class="meta">📍 46A Dinh Cong Trang, Tan Dinh Ward, District 1 · 08:00-21:00</div>
+          <p>Anthony Bourdain 推荐的越南煎饼名店！脆皮煎饼+烤猪肉串（nem lui），配满盘新鲜生菜卷着吃。</p>
+        </div>
+        <div class="michelin-price">25-40<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Cục Gạch Quán <span class="michelin-badge michelin-bib">Bib</span></h4>
+          <div class="meta">📍 10 Dang Tat, Tan Dinh Ward, District 1 · 10:00-22:00</div>
+          <p>回到旧时越南的家常饭馆。砂锅红烧鱼、酸汤、水煮时蔬、咸煎排骨。木质桌椅+温暖黄灯，像在西贡老宅厨房用餐。</p>
+        </div>
+        <div class="michelin-price">50-80<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Phở Lệ <span class="michelin-badge michelin-bib">Bib</span></h4>
+          <div class="meta">📍 413-415 Nguyen Trai St, Ward 7, District 5 · 06:00-22:00</div>
+          <p>70年老字号南越河粉！浓骨汤+生熟牛肉+牛筋+牛丸，料足味浓。堤岸区华人街附近。</p>
+        </div>
+        <div class="michelin-price">15-25<br><span style="font-size:11px;color:#999">元/碗</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Phở Miến Gà Kỳ Đồng <span class="michelin-badge michelin-bib">Bib</span></h4>
+          <div class="meta">📍 4/5Bis Ky Dong St, Ward 9, District 3 · 06:00-22:00</div>
+          <p>西贡人最爱的鸡河粉！清汤头清爽不薄，土鸡肉结实有弹性。也可换粉丝鸡汤（Miến Gà）。</p>
+        </div>
+        <div class="michelin-price">15-25<br><span style="font-size:11px;color:#999">元/碗</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bún Bò Huế 14B <span class="michelin-badge michelin-bib">Bib</span></h4>
+          <div class="meta">📍 14B Street 46, Ward 2, District 4 · 06:00-21:00</div>
+          <p>顺化牛肉米线！淡红汤底，香茅清香+微辣，牛肉嫩、蹄髈油润。从早到晚人潮不断。</p>
+        </div>
+        <div class="michelin-price">15-25<br><span style="font-size:11px;color:#999">元/碗</span></div>
+      </div>
+
+      <h4 style="font-size: 16px; font-weight: 700; margin: 20px 0 12px; color: #185fa5;">🔵 米其林推荐 Michelin Selected</h4>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Bò Kho Gánh <span class="michelin-badge michelin-selected">Selected</span></h4>
+          <div class="meta">📍 Lot H/029 Su Van Hanh, Ward 2, District 10 · 07:00-20:00</div>
+          <p>越式红烧牛肉，酱汁微稠，牛肉软而不烂。配法棍或河粉条都好。平民料理的精致版。</p>
+        </div>
+        <div class="michelin-price">20-35<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>Mặn Mòi <span class="michelin-badge michelin-selected">Selected · 新增2025</span></h4>
+          <div class="meta">📍 34 Vo Van Tan, Ward 6, District 3 · 11:00-22:00</div>
+          <p>2025新入选！主厨黄雅获米其林杰出贡献奖。创意越南菜，菜品讲述越南各地风味故事。</p>
+        </div>
+        <div class="michelin-price">80-150<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>The Monkey Gallery Dining <span class="michelin-badge michelin-selected">Selected</span></h4>
+          <div class="meta">📍 3F, 91 Mac Thi Buoi St, Saigon Ward, District 1 · ☎ +84 793 991 992</div>
+          <p>日系极简设计，混凝土吧台面对开放厨房。现代欧式技法+创意鸡尾酒。4道式套餐可选。</p>
+        </div>
+        <div class="michelin-price">100-200<br><span style="font-size:11px;color:#999">元/人</span></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="section">
+    <h2><span class="icon">🌿</span> 自然美景精选</h2>
+    <p class="sec-desc">本次行程覆盖的全部自然景观一览</p>
+
+    <div class="michelin-section">
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>海云岭 · 最美沿海公路</h4>
+          <div class="meta">Day 5 · 岘港以北约30km</div>
+          <p>21km盘山公路蜿蜒于山海之间，Top Gear 评"世界最美海滨公路"。山顶海云关古城墙俯瞰灵姑湾全景，一面翠山一面碧海。</p>
+        </div>
+      </div>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>灵姑湾 · BBC人生必去50地</h4>
+          <div class="meta">Day 5 · 海云岭北侧</div>
+          <p>三面环山一面临海的月牙形海湾，白沙滩细腻，海水碧绿。游客稀少，有渔村和养蠔场，原始宁静。</p>
+        </div>
+      </div>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>山茶半岛 · 原始雨林+观音像</h4>
+          <div class="meta">Day 5 · 岘港东北</div>
+          <p>67米白玉观音像俯瞰海湾，保留大量原生热带雨林，有野生叶猴群。沿海公路号称"越南最美海岸线"。</p>
+        </div>
+      </div>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>五行山 · 石灰岩溶洞</h4>
+          <div class="meta">Day 3 · 会安与岘港之间</div>
+          <p>五座石灰岩山峰代表金木水火土，水山内有华严洞、玄空洞，洞中佛塔佛像+天然石笋，光线从洞顶洒下神秘壮观。</p>
+        </div>
+      </div>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>巴拿山 · 穿越云海缆车</h4>
+          <div class="meta">Day 4 · 岘港西南约25km</div>
+          <p>5.8km世界最长单缆索道，穿越三层云雾，气温骤降10度。山顶法式村庄+巨手金桥，如入仙境。</p>
+        </div>
+      </div>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>美溪海滩 · 世界六大最美海滩</h4>
+          <div class="meta">Day 5途经 · 岘港东海岸</div>
+          <p>Forbes 评"世界六大最美海滩"，沙细如粉，海水清澈。虽住市区但值得专程来一趟看日落。</p>
+        </div>
+      </div>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>安邦海滩 · 会安秘境白沙滩</h4>
+          <div class="meta">Day 2 · 会安以东4km</div>
+          <p>比美溪更安静，几乎无商业化。沙白水清，海边躺椅+椰子=完美下午。</p>
+        </div>
+      </div>
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>水椰林 · 篮子船迷宫</h4>
+          <div class="meta">Day 2 · 会安Cam Thanh</div>
+          <p>圆形竹篮船穿梭水椰林水道，船夫表演旋圈和撒网捕鱼，原生态红树林湿地。</p>
+        </div>
+      </div>
+
+      <h4 style="font-size: 16px; font-weight: 700; margin: 20px 0 12px; color: #185fa5;">🏙️ 胡志明 · 水乡自然</h4>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>湄公河三角洲 · 水乡果乡</h4>
+          <div class="meta">Day 7 · 美拖 My Tho（距胡志明70km）</div>
+          <p>越南最大河流三角洲，水道纵横、椰林密布、果林飘香。乘手摇船穿水椰林水道，参观龙岛水果园，品尝象耳鱼。BBC"一生必去50地"之一。</p>
+        </div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>西贡河 · 热带都市水岸</h4>
+          <div class="meta">Day 6-7 · 胡志明市区</div>
+          <p>贯穿胡志明市的母亲河。傍晚沿河散步吹热带晚风，或乘夜游船看两岸灯火。河上可看 Bitexco 金融塔和西贡大桥夜景。</p>
+        </div>
+      </div>
+
+      <div class="michelin-card">
+        <div class="michelin-info">
+          <h4>古芝地道 · 热带丛林秘境</h4>
+          <div class="meta">Day 8 · 古芝 Cu Chi（距市区40km）</div>
+          <p>隐藏在茂密热带丛林中的250公里地下隧道网络。地道上方覆盖伪装植被，周围是橡胶林和乡村风光。蝴蝶和鸟类众多，自然与历史交织。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Accommodation ===== -->
+  <div class="section">
+    <h2><span class="icon">🏨</span> 住宿推荐</h2>
+    <p class="sec-desc">会安 Little Residence · 岘港 Wink Danang Centre · 胡志明 Saigon Hotel</p>
+
+    <h3 style="font-size: 17px; font-weight: 700; margin: 20px 0 12px; color: #534ab7;">🏨 会安 · Little Residence. A Boutique Hotel & Spa（2晚）</h3>
+
+    <div class="hotel-card" style="border-left: 4px solid #534ab7;">
+      <span class="hotel-tag" style="background:#ede8fc;color:#534ab7;">精品设计</span>
+      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">本次入住</span>
+      <div class="hotel-name">Little Residence. A Boutique Hotel & Spa ⭐4</div>
+      <div class="hotel-meta">📍 35 Đào Duy Từ, Cẩm Phô, Hội An · ☎ +84 235 3929 222 · 评分 9.3/10 · 约 350-500元/晚</div>
+      <div class="hotel-desc">
+        Little Hoi An Group 旗下精品酒店，灵感来自一段葡萄牙商人与会安女子的未完爱情故事。<strong>葡萄牙式外立面 + 越南灵魂</strong>的浪漫设计，2014年开业，2024年翻新。49间房，步行几分钟到<strong>来远桥（日本桥）</strong>、会安夜市和秋盘河。<br>
+        <strong>设施</strong>：室内泳池、Beleza Spa（4间按摩房）、健身中心、免费自行车、越南烹饪课程。The Dishes 餐厅提供越式+西式早餐自助（6:30-10:00）。<br>
+        <strong>房型推荐</strong>：Residence Suite（60m²，含阳台+浴缸，可看古城/河景，含每日30分钟足部按摩）或 Junior Suite（40m²，葡式装饰）。<br>
+        <strong>特色</strong>：华人友好，提供中文服务；欢迎茶点+水果；前台详细讲解古城游览路线。
+      </div>
+    </div>
+
+    <h3 style="font-size: 17px; font-weight: 700; margin: 20px 0 12px; color: #d85a30;">🏨 岘港 · Wink Hotel Danang Centre（3晚）</h3>
+
+    <div class="hotel-card" style="border-left: 4px solid #d85a30;">
+      <span class="hotel-tag" style="background:#fcebed;color:#a32d2d;">凯悦旗下</span>
+      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">本次入住</span>
+      <div class="hotel-name">Wink Hotel Danang Centre, Unscripted by Hyatt ⭐4</div>
+      <div class="hotel-meta">📍 178 Tran Phu St, Phuoc Ninh Ward, Hai Chau District · ☎ +84 28 2250 8531 · 评分 9.3/10 · 约 300-450元/晚</div>
+      <div class="hotel-desc">
+        凯悦 Unscripted by Hyatt 品牌旗下设计型酒店，19层244间房。<strong>位置绝佳</strong>：步行 180 米到粉红教堂、400 米到韩市场、650 米到龙桥。楼顶有 Wink Bar 可看龙桥夜景。24小时前台、健身房、自助入住。STAY24 理念——退房时间与入住时间同步（下午2点入住则次日下午2点退房），灵活方便。含早餐，有酒吧和餐厅。<br>
+        <strong>房型推荐</strong>：Wink Lite+ Queen（20m²，1.8m大床，2-19层有窗），选高楼层可看龙桥/韩江景色。
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <span class="hotel-tag" style="background:#eaf3de;color:#3b6d11;">备选中档</span>
+      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">步行4分钟</span>
+      <div class="hotel-name">Avora Hotel</div>
+      <div class="hotel-meta">170 Bạch Đằng St · 评分4.6 · 约 300-400元/晚</div>
+      <div class="hotel-desc">屋顶露台可看龙桥喷火。距韩市场4分钟，距粉红教堂2分钟。33间房，2024年装修。</div>
+    </div>
+
+    <div class="hotel-card">
+      <span class="hotel-tag" style="background:#faeeda;color:#854f0b;">备选平价</span>
+      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">步行2分钟</span>
+      <div class="hotel-name">Sanouva Danang Hotel</div>
+      <div class="hotel-meta">距韩市场约200米 · 评分4.5 · 约 250-350元/晚</div>
+      <div class="hotel-desc">市区精品酒店，干净舒适，服务好。步行可达韩市场、粉红教堂、龙桥。性价比高。</div>
+    </div>
+
+    <h3 style="font-size: 17px; font-weight: 700; margin: 28px 0 12px; color: #185fa5;">🏨 胡志明 · Saigon Hotel（2晚）</h3>
+
+    <div class="hotel-card" style="border-left: 4px solid #185fa5;">
+      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">法式殖民风</span>
+      <span class="hotel-tag" style="background:#fcebed;color:#a32d2d;">本次入住</span>
+      <div class="hotel-name">Saigon Hotel ⭐4</div>
+      <div class="hotel-meta">📍 8 Dong Khoi St, Ben Nghe Ward, District 1 · ☎ +84 28 3829 8989 · 评分 8.2/10 · 约 400-600元/晚</div>
+      <div class="hotel-desc">
+        坐落于胡志明最繁华的<strong>同起街（Dong Khoi）</strong>，1930年代法式殖民风格建筑，经典与现代共存。步行 5 分钟到<strong>西贡歌剧院</strong>、8 分钟到<strong>滨城市场</strong>、10 分钟到<strong>战争遗迹博物馆</strong>、15 分钟到<strong>统一宫</strong>。酒店有泳池、Saigon Oriental 餐厅、健身房。建议选高楼层房间，可俯瞰城市天际线。<br>
+        <strong>周边美食密集</strong>：Hai's Restaurant、Lagom Café 近在咫尺，下楼就是同起街购物美食区。
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <span class="hotel-tag" style="background:#fcebed;color:#a32d2d;">备选五星</span>
+      <span class="hotel-tag" style="background:#e6f1fb;color:#185fa5;">同一条街</span>
+      <div class="hotel-name">Sheraton Saigon Grand Opera Hotel ⭐5</div>
+      <div class="hotel-meta">📍 88 Dong Khoi St, District 1 · 评分4.2 · 约 800-1200元/晚</div>
+      <div class="hotel-desc">同起街上五星级，紧邻歌剧院。484间房，室外泳池、全套SPA、5间餐厅酒吧。万豪旗下，服务稳定。</div>
+    </div>
+
+    <div class="highlight-box tip">
+      <span class="label">住宿位置说明</span>
+      <strong>会安 Little Residence</strong>：35 Đào Duy Từ，葡萄牙式精品设计酒店，步行几分钟到日本桥和夜市，有SPA和泳池。<br>
+      <strong>岘港 Wink Danang Centre</strong>：市区心脏位置，粉红教堂180米/韩市场400米/龙桥650米，去美溪海滩打车15分钟。兼顾便利与美食探索。<br>
+      <strong>胡志明 Saigon Hotel</strong>：同起街8号，District 1 绝对中心。法式殖民风情，步行可达全部主要景点。夜生活区范五老街打车5分钟。
+    </div>
+  </div>
+
+  <!-- ===== Budget ===== -->
+  <div class="section">
+    <h2><span class="icon">💰</span> 预算估算（人均）</h2>
+    <p class="sec-desc">9天7晚 · 7/25 HX231/HX548 上海→香港转机→岘港 · 7/30 VN7141 岘港→胡志明 · 8/2 HO1328 胡志明→浦东</p>
+
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>项目</th>
+          <th>明细</th>
+          <th>金额（元）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>去程机票</td>
+          <td>7/25 HX231 PVG→HKG + HX548 HKG→DAD（香港航空）</td>
+          <td>1,500 - 2,500</td>
+        </tr>
+        <tr>
+          <td>越南国内机票</td>
+          <td>7/30 VN7141 DAD→SGN（越南航空）</td>
+          <td>200 - 400</td>
+        </tr>
+        <tr>
+          <td>返程机票</td>
+          <td>8/2 HO1328 SGN→PVG（吉祥航空，红眼航班）</td>
+          <td>600 - 1,200</td>
+        </tr>
+        <tr>
+          <td>香港转机休息厅</td>
+          <td>环亚 Plaza Premium（Klook 预订约 280 港币）</td>
+          <td>250 - 350</td>
+        </tr>
+        <tr>
+          <td>签证</td>
+          <td>越南电子签 e-Visa</td>
+          <td>180</td>
+        </tr>
+        <tr>
+          <td>住宿（7晚）</td>
+          <td>Little Residence 2晚 + Wink Danang Centre 3晚 + Saigon Hotel 2晚</td>
+          <td>1,700 - 3,400</td>
+        </tr>
+        <tr>
+          <td>餐饮</td>
+          <td>9天（街头小吃+米其林餐厅+海鲜+游船晚餐+fine dining）</td>
+          <td>1,000 - 2,200</td>
+        </tr>
+        <tr>
+          <td>巴拿山套票</td>
+          <td>缆车+金桥+法国村+自助午餐</td>
+          <td>250 - 280</td>
+        </tr>
+        <tr>
+          <td>交通</td>
+          <td>Grab打车+包车（海云岭）+机场接送</td>
+          <td>400 - 700</td>
+        </tr>
+        <tr>
+          <td>摩托租车</td>
+          <td>3-4天 × 30-45元/天 + 油费</td>
+          <td>100 - 200</td>
+        </tr>
+        <tr>
+          <td>胡志明体验</td>
+          <td>湄公河三角洲一日游 + 古芝半日游 + 西贡河游船晚餐 + SPA</td>
+          <td>400 - 700</td>
+        </tr>
+        <tr>
+          <td>门票体验</td>
+          <td>五行山、水椰林、会安通票、统一宫、古芝地道等</td>
+          <td>120 - 250</td>
+        </tr>
+        <tr>
+          <td>伴手礼</td>
+          <td>芒果干、咖啡、灯笼等</td>
+          <td>100 - 300</td>
+        </tr>
+        <tr class="total">
+          <td>合计</td>
+          <td></td>
+          <td>6,800 - 12,680</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 13px; color: #888; margin-top: 10px;">* 不含国际机票的当地花费约 4,300-7,530 元/人（含香港休息厅+越南国内机票+HO1328返程）。当地消费极低，一碗米其林米粉仅 12-25 元。摩托日租仅 30 元。</p>
+  </div>
+
+  <!-- ===== Tips ===== -->
+  <div class="section">
+    <h2><span class="icon">📌</span> 实用贴士</h2>
+    <p class="sec-desc">12条行前必读</p>
+
+    <div class="tips-grid">
+      <div class="tip-item">
+        <div class="tip-num">01</div>
+        <h4>签证</h4>
+        <p>提前一周办越南电子签 e-Visa（.gov.vn 官网），单次入境约 180 元，90 天有效。打印出来随身携带。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">02</div>
+        <h4>最佳季节</h4>
+        <p>2-5 月干季最佳。7 月属雨季尾声，白天晴朗但午后可能有阵雨，带把伞即可，不影响游玩。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">03</div>
+        <h4>货币</h4>
+        <p>1 元 ≈ 3,500 越南盾。到机场或市区换汇所换钱，汇率比酒店好。大店可刷卡，但街头小店和米其林小馆只收现金。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">04</div>
+        <h4>交通</h4>
+        <p>市区用 Grab 打车（类似滴滴），下载 Grab APP 绑卡或付现金。韩市场到机场仅 3.5km，打车约 10 元。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">05</div>
+        <h4>SIM卡</h4>
+        <p>机场买 Viettel 或 Vinaphone 旅游卡，30 天无限流量约 30-50 元。或提前在淘宝买好。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">06</div>
+        <h4>米其林餐厅预订</h4>
+        <p>Nén Danang 和 La Maison 1888 必须提前预订（官网/电话）。Bib Gourmand 和 Selected 类基本可现场去，但周末建议早到。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">07</div>
+        <h4>海云岭交通</h4>
+        <p>山路弯多，无骑行经验者建议包车（约 200-300 元/天）。有经验可骑摩托（详见租车攻略），务必穿防滑鞋、带防晒。早上 7-9 点光线好人少。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">08</div>
+        <h4>巴拿山注意</h4>
+        <p>山顶比山下低 10 度，带件薄外套。工作日去！周末排队 1-2 小时。一上山先冲金桥拍照，再慢慢逛。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">09</div>
+        <h4>会安古城</h4>
+        <p>18:00 后进灯笼区需另购票（8 万盾/24 元）。清晨 6:00-7:00 古城几乎没人，是最美的拍照时间。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">10</div>
+        <h4>砍价</h4>
+        <p>韩市场和会安夜市都可砍价，从 5-6 折开始谈。餐厅和便利店明码标价不用砍。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">11</div>
+        <h4>语言</h4>
+        <p>旅游区英语基本通用。Grab APP 内可打字沟通。下载 Google Translate 越南语离线包备用。</p>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">12</div>
+        <h4>租摩托</h4>
+        <p>日租仅 25-50 元，是探索海岸线最佳方式。大部分店家免费送车到酒店。详见文末「摩托车租车攻略」——含岘港 6 家+会安 4 家店推荐、14 条骑行贴士和 5 条推荐路线。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Motorbike Rental ===== -->
+  <div class="section">
+    <h2><span class="icon">🏍️</span> 摩托车租车攻略 · 岘港 &amp; 会安</h2>
+    <p class="sec-desc">自由探索海岸线的最佳方式，日租仅需 25-50 元</p>
+
+    <div class="rental-card">
+      <div class="highlight-box tip" style="margin-top:0;">
+        <span class="label">为什么租摩托？</span>
+        岘港到会安 30km 沿海公路、山茶半岛环山公路、灵姑湾秘境海滩——这些最美路线，摩托比汽车更自由、比自行车更省力。越南是摩托王国，骑行体验本身就是旅行的一部分。
+      </div>
+
+      <!-- ===== Da Nang Rental ===== -->
+      <div class="rental-area-title">🏠 岘港租车店推荐</div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">🛵</div>
+        <div class="shop-info">
+          <h4>Binh Minh Motorbike Rental</h4>
+          <div class="shop-addr">📍 18 Phan Boi, An Hải, Sơn Trà · ☎ 0986 862 986 · 10分钟送车到酒店</div>
+          <p>本地人口碑首选，车况好、送车快。Honda Vision / Airblade 自动挡为主，适合城市+短途骑行。支持 WhatsApp 预订。</p>
+        </div>
+        <div class="shop-price">10万-15万盾/天<br><span style="font-size:11px;color:#999;">≈30-45元</span></div>
+      </div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">💰</div>
+        <div class="shop-info">
+          <h4>Huu Vy Motorbike Rental</h4>
+          <div class="shop-addr">📍 297 Chinh Huu, Sơn Trà（近美溪海滩）· ☎ 0932 445 145</div>
+          <p>经济型之选，<strong>免押金</strong>（仅需护照复印件）。车型以 Honda Vision 为主，适合预算有限的旅客。24/7 送取车。</p>
+        </div>
+        <div class="shop-price">8万-12万盾/天<br><span style="font-size:11px;color:#999;">≈25-35元</span></div>
+      </div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">✈️</div>
+        <div class="shop-info">
+          <h4>Song Han Motorbike Rental</h4>
+          <div class="shop-addr">📍 86/26 Thi Sach, Hòa Thuận Nam, Hải Châu · ☎ 0935 304 050 · 支持机场送取车</div>
+          <p>最适合落地即取车的店家，可在岘港机场直接交车，离开时也可在机场还车。省去打车去市区的麻烦。</p>
+        </div>
+        <div class="shop-price">10万-15万盾/天<br><span style="font-size:11px;color:#999;">≈30-45元</span></div>
+      </div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">⭐</div>
+        <div class="shop-info">
+          <h4>Motorvina</h4>
+          <div class="shop-addr">📍 11 An Thuong 19, Sơn Trà（岘港店）· ☎ 0835 115 599 · 岘港+会安+顺化多门店 · 支持异地还车</div>
+          <p>高端连锁，车况最佳，有 Honda PCX / Yamaha NVX 等大排量。最大优势：<strong>异地还车</strong>（如岘港租、会安还，或骑到顺化还）。24/7 道路救援。适合海云岭长途骑行。</p>
+        </div>
+        <div class="shop-price">15万-25万盾/天<br><span style="font-size:11px;color:#999;">≈45-75元</span></div>
+      </div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">🔌</div>
+        <div class="shop-info">
+          <h4>Andy Motorbike Rental</h4>
+          <div class="shop-addr">📍 30 Le Thuoc, An Hải, Sơn Trà · ☎ 0935 888 028 · 美溪海滩区域</div>
+          <p>提供<strong>电动摩托</strong>（电摩），无需驾照、无噪音无尾气，续航 120-180km。适合不会骑油摩或怕热的旅客。押金 50 万盾。</p>
+        </div>
+        <div class="shop-price">17.5万盾/天<br><span style="font-size:11px;color:#999;">≈50元</span></div>
+      </div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">📍</div>
+        <div class="shop-info">
+          <h4>Thanh Cong Motorbike Rental</h4>
+          <div class="shop-addr">📍 12 Pham Thieu, Thanh Khé · ☎ 0377 276 635 · 韩市场以南租车一条街</div>
+          <p>韩市场附近最集中的租车一条街，100k-150k 不等。租多天可砍价。老板会推荐附近加油站。不需要驾照和国际驾照。</p>
+        </div>
+        <div class="shop-price">10万-15万盾/天<br><span style="font-size:11px;color:#999;">≈30-45元</span></div>
+      </div>
+
+      <!-- ===== Hoi An Rental ===== -->
+      <div class="rental-area-title">🏠 会安租车店推荐</div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">🛵</div>
+        <div class="shop-info">
+          <h4>Hoi An Bike Rental</h4>
+          <div class="shop-addr">📍 14 Cua Dai St, Hội An · ☎ 0961 172 420</div>
+          <p>新车多、车况好。<strong>送头盔+手机架+雨衣+急救包</strong>，免费送取车到酒店。会安租车首选，服务最全。</p>
+        </div>
+        <div class="shop-price">15万盾/天<br><span style="font-size:11px;color:#999;">≈45元</span></div>
+      </div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">🔧</div>
+        <div class="shop-info">
+          <h4>Mr. Hai Motorbike Rental</h4>
+          <div class="shop-addr">📍 170 Ly Thai To St, Hội An · ☎ 0784 840 489</div>
+          <p>口碑老店，<strong>爆胎免费修</strong>，随叫随到。送手机架，出车前全面检查。适合长途骑行有保障。</p>
+        </div>
+        <div class="shop-price">12万-15万盾/天<br><span style="font-size:11px;color:#999;">≈35-45元</span></div>
+      </div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">⭐</div>
+        <div class="shop-info">
+          <h4>Hoi An Scooter Rental</h4>
+          <div class="shop-addr">📍 38/3 Cua Dai St, Hội An · ☎ 0935 640 064</div>
+          <p>高端体验，新车车队，配头盔+手机架+雨衣。<strong>24/7 道路救援</strong>，会安区域内免费送取。英文沟通流畅。</p>
+        </div>
+        <div class="shop-price">20万盾/天起<br><span style="font-size:11px;color:#999;">≈60元</span></div>
+      </div>
+
+      <div class="rental-shop">
+        <div class="shop-icon">🔗</div>
+        <div class="shop-info">
+          <h4>Motorvina（会安店）</h4>
+          <div class="shop-addr">📍 439/28 Cua Dai St, Hội An · ☎ 0848 005 599</div>
+          <p>与岘港店同一连锁，<strong>可异地还车</strong>。有 Kawasaki Versys X300 / Honda XR150 等运动摩托，适合海云岭骑行发烧友。</p>
+        </div>
+        <div class="shop-price">20万盾/天起<br><span style="font-size:11px;color:#999;">≈60元</span></div>
+      </div>
+
+      <!-- ===== Rental Tips ===== -->
+      <div class="rental-area-title">📋 租车 &amp; 骑行必读</div>
+
+      <ul class="rental-tips-list">
+        <li><strong>推荐车型：</strong>Honda Airblade（125-150cc 自动挡）— 城市骑行+山茶半岛首选，动力够用又好操控。长途海云岭选 Honda PCX（160cc），悬挂更舒适。</li>
+        <li><strong>价格参考：</strong>标准自动挡 8万-15万盾/天（25-45元），高端 PCX/NVX 15万-20万盾/天（45-60元），电摩约 17.5万盾/天（50元）。租 3 天以上通常可砍 10-20%。</li>
+        <li><strong>驾照：</strong>实际上不查驾照和国际驾照，但建议带上本国驾照备查。50cc 以下理论上不需要驾照。</li>
+        <li><strong>必戴头盔：</strong>越南法律强制戴头盔，不戴罚款 50-100 万盾。租车店免费提供，嫌脏可自带头盔。</li>
+        <li><strong>加油：</strong>先加 2 万盾（约 6 元）足够跑 2-3 天城市骑行。不要加太多，还车时剩油不退钱。加油站到处都有，1 升约 2.3 万盾。</li>
+        <li><strong>押金：</strong>通常是护照原件、护照复印件或现金 50-100 万盾。建议给复印件或现金，护照留在自己手里。</li>
+        <li><strong>出车检查：</strong>务必当面检查刹车、轮胎花纹、机油量、灯光、油表，拍照留存车况。有划痕提前跟老板确认。</li>
+        <li><strong>停车：</strong>路边停车 2,000-10,000 盾/次（1-3 元），景点停车场 5,000-20,000 盾。餐厅/咖啡店门口通常免费停车。有人看管的停车场会给号码牌。</li>
+        <li><strong>会安古城限行：</strong>下午 15:00 后摩托车禁止进入古镇核心区！建议 15:00 前骑摩托车绕一圈，然后停在古城入口（Quan Cong Temple 旁有停车位，2 万盾/次），步行进入。</li>
+        <li><strong>岘港→会安骑行路线：</strong>30km 约 50 分钟，沿沿海公路（Điện Biên Phủ → Nguyễn Tất Thành）一路向南，途经美溪海滩、山茶半岛脚下，路况好、风景美。导航搜"Hanh Coconut"（水椰林）即可。</li>
+        <li><strong>海云岭骑行警告：</strong>21km 盘山公路弯多路窄，大货车多。<strong>仅限有骑行经验者</strong>。建议早上 7-9 点骑行，光线好、车少、不热。务必穿防滑鞋+长裤，带防晒。</li>
+        <li><strong>交通规则：</strong>越南靠右行驶。红灯不能右转（除非有绿色箭头）。限速市区 40km/h、公路 60-80km/h。交警偶尔查车，戴头盔+有证件通常放行。</li>
+        <li><strong>雨天注意：</strong>7 月雨季午后可能有暴雨。租车店送雨衣。如遇大雨建议靠边停车等雨停，通常 20-30 分钟即过。路面湿滑减速慢行。</li>
+        <li><strong>保险：</strong>租车通常不含保险。建议购买旅行保险（含摩托车事故）。发生事故先联系租车店，重大事故报警 113。</li>
+      </ul>
+
+      <div class="highlight-box nature">
+        <span class="label">推荐骑行路线</span>
+        <strong>① 岘港→会安沿海路</strong>（30km/50min，平路，新手友好）<br>
+        <strong>② 山茶半岛环线</strong>（25km/1h，缓坡，海景无敌）<br>
+        <strong>③ 美溪海滩→龙桥→韩江沿岸</strong>（10km/30min，城市骑行，看日落）<br>
+        <strong>④ 海云岭</strong>（21km/1h，盘山公路，仅限老手，世界最美沿海公路之一）<br>
+        <strong>⑤ 会安→安邦海滩→水椰林</strong>（8km/20min，平路，田园+海滩风光）
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Packing List ===== -->
+  <div class="section">
+    <h2><span class="icon">🎒</span> 行李清单</h2>
+    <p class="sec-desc">轻松度假，不需要太多</p>
+
+    <div class="packing-grid">
+      <div class="packing-item">护照 + 签证打印件</div>
+      <div class="packing-item">防晒霜 SPF50+</div>
+      <div class="packing-item">薄外套（巴拿山/空调房）</div>
+      <div class="packing-item">泳衣（海滩/酒店泳池）</div>
+      <div class="packing-item">防滑凉鞋/运动鞋</div>
+      <div class="packing-item">太阳镜 + 遮阳帽</div>
+      <div class="packing-item">雨伞/折叠雨衣</div>
+      <div class="packing-item">驱蚊液</div>
+      <div class="packing-item">转换插头（越南用Type A/C）</div>
+      <div class="packing-item">充电宝</div>
+      <div class="packing-item">常备药（肠胃药/创可贴）</div>
+      <div class="packing-item">少量美元现金（应急）</div>
+      <div class="packing-item">🏍️ 骑行用长裤 + 防滑鞋</div>
+      <div class="packing-item">🏍️ 骑行手套（可选）</div>
+      <div class="packing-item">🏍️ 本国驾照（备查）</div>
+    </div>
+  </div>
+
+  <!-- ===== Interactive Map ===== -->
+  <div class="section">
+    <h2><span class="icon">🗺️</span> 全程 Google 地图 · 岘港/会安/胡志明</h2>
+    <p class="sec-desc">基于 Google Maps 瓦片，55+标记点覆盖三城。点击标记查看详细信息，弹窗可跳转 Google Maps 导航</p>
+    <div id="travel-map"></div>
+    <div style="text-align: center; margin: 8px 0; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+      <button id="map-toggle-btn" style="padding: 6px 16px; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; color: #333;">🛰️ 切换卫星视图</button>
+      <button id="map-goto-danang" style="padding: 6px 16px; border: 1px solid #0f6e56; border-radius: 8px; background: #e1f5ee; cursor: pointer; font-size: 13px; color: #0f6e56;">📍 岘港/会安</button>
+      <button id="map-goto-hcmc" style="padding: 6px 16px; border: 1px solid #185fa5; border-radius: 8px; background: #e6f1fb; cursor: pointer; font-size: 13px; color: #185fa5;">📍 胡志明</button>
+    </div>
+    <div class="map-legend" id="map-legend">
+      <div class="map-legend-item" data-type="attraction"><div class="map-legend-dot" style="background:#e85d3d;"></div>行程景点</div>
+      <div class="map-legend-item" data-type="restaurant"><div class="map-legend-dot" style="background:#a32d2d;"></div>米其林餐厅</div>
+      <div class="map-legend-item" data-type="rental"><div class="map-legend-dot" style="background:#2563eb;"></div>租车店</div>
+      <div class="map-legend-item" data-type="hotel"><div class="map-legend-dot" style="background:#7c3aed;"></div>住宿区域</div>
+      <div class="map-legend-item" data-type="airport"><div class="map-legend-dot" style="background:#0f6e56;"></div>机场</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    岘港 + 会安 + 胡志明 9日行程攻略 v8 · 7/25-8/2 · HX231/HX548 香港航空 · VN7141 越南航空 · HO1328 吉祥航空 · Google Maps<br>
+    Wink Danang Centre · Saigon Hotel · 自然美景 + 米其林美食 + 摩托自由行 · 2025年7月 · 祝旅途愉快
+  </div>
+
+</div>
+
+<script>
+// ===== Travel Map with Google Maps Tiles =====
+(function() {
+  var map = L.map('travel-map').setView([16.0, 108.25], 11);
+
+  // Google Maps standard road map tiles
+  var googleRoad = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+    attribution: '&copy; Google Maps',
+    maxZoom: 20
+  }).addTo(map);
+
+  // Google Maps satellite tiles
+  var googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+    attribution: '&copy; Google Maps',
+    maxZoom: 20
+  });
+
+  // Toggle button
+  var currentLayer = googleRoad;
+  var isSat = false;
+  var toggleBtn = document.getElementById('map-toggle-btn');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      if (isSat) {
+        map.removeLayer(googleSat);
+        map.addLayer(googleRoad);
+        currentLayer = googleRoad;
+        isSat = false;
+        toggleBtn.textContent = '🛰️ 切换卫星视图';
+      } else {
+        map.removeLayer(googleRoad);
+        map.addLayer(googleSat);
+        currentLayer = googleSat;
+        isSat = true;
+        toggleBtn.textContent = '🗺️ 切换地图视图';
+      }
+    });
+  }
+
+  // Region navigation buttons
+  var btnDanang = document.getElementById('map-goto-danang');
+  var btnHcmc = document.getElementById('map-goto-hcmc');
+  if (btnDanang) {
+    btnDanang.addEventListener('click', function() {
+      map.setView([16.0, 108.25], 11);
+    });
+  }
+  if (btnHcmc) {
+    btnHcmc.addEventListener('click', function() {
+      map.setView([10.775, 106.700], 13);
+    });
+  }
+
+  // Custom marker icons
+  function makeIcon(color) {
+    return L.divIcon({
+      className: 'custom-marker',
+      html: '<div style="width:24px;height:24px;border-radius:50% 50% 50% 0;background:' + color + ';transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.35);"></div>',
+      iconSize: [24, 24],
+      iconAnchor: [12, 22],
+      popupAnchor: [0, -20]
+    });
+  }
+
+  var iconAttraction = makeIcon('#e85d3d');
+  var iconRestaurant = makeIcon('#a32d2d');
+  var iconRental = makeIcon('#2563eb');
+  var iconHotel = makeIcon('#7c3aed');
+  var iconAirport = makeIcon('#0f6e56');
+
+  function popup(title, addr, typeLabel, color, lat, lng) {
+    var gmapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng;
+    return '<div class="map-marker-popup">' +
+      '<h4>' + title + '</h4>' +
+      '<div class="popup-addr">' + (addr || '') + '</div>' +
+      '<span class="popup-type" style="background:' + color + '20;color:' + color + ';">' + typeLabel + '</span>' +
+      '<br><a href="' + gmapsUrl + '" target="_blank" style="display:inline-block;margin-top:6px;font-size:12px;color:#1967d2;text-decoration:none;">📍 在 Google Maps 中打开 →</a>' +
+      '</div>';
+  }
+
+  // All locations
+  var locations = [
+    // Airports
+    { type: 'airport', name: '岘港国际机场 (DAD)', addr: 'Thạnh Mỹ, Hòa Vang, Đà Nẵng', lat: 16.0440, lng: 108.1990, icon: iconAirport, label: '机场' },
+
+    // Attractions - Da Nang
+    { type: 'attraction', name: '韩市场 (Han Market)', addr: '11 Tran Phu, Hai Chau, Đà Nẵng', lat: 16.0645, lng: 108.2130, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '粉红教堂 (Da Nang Cathedral)', addr: '156 Tran Phu, Hai Chau, Đà Nẵng', lat: 16.0640, lng: 108.2120, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '龙桥 (Dragon Bridge)', addr: 'Cầu Rồng, Đà Nẵng', lat: 16.0600, lng: 108.2230, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '美溪海滩 (My Khe Beach)', addr: 'Vo Nguyen Giap, Sơn Trà, Đà Nẵng', lat: 16.0620, lng: 108.2490, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '山茶半岛 · 灵应寺 (观音像)', addr: 'Thọ Quang, Sơn Trà, Đà Nẵng', lat: 16.1160, lng: 108.2760, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '五行山 (Marble Mountains)', addr: 'Hòa Hải, Ngũ Hành Sơn, Đà Nẵng', lat: 16.0100, lng: 108.2700, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '海云岭 (Hai Van Pass)', addr: 'Lộc Bổ, Phú Lộc, Thừa Thiên Huế', lat: 16.2780, lng: 108.1980, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '灵姑湾 (Lang Co Bay)', addr: 'Lộc Vinh, Phú Lộc, Thừa Thiên Huế', lat: 16.2920, lng: 108.1810, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '巴拿山 (Ba Na Hills)', addr: 'Hòa Ninh, Hòa Vang, Đà Nẵng', lat: 15.9980, lng: 108.0060, icon: iconAttraction, label: '行程景点' },
+
+    // Attractions - Hoi An
+    { type: 'attraction', name: '会安古城 (Hoi An Ancient Town)', addr: 'Minh An, Hội An, Quảng Nam', lat: 15.8800, lng: 108.3380, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '安邦海滩 (An Bang Beach)', addr: 'Cẩm An, Hội An, Quảng Nam', lat: 15.8700, lng: 108.3350, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '水椰林 (Bay Mau Coconut Forest)', addr: 'Cẩm Thanh, Hội An, Quảng Nam', lat: 15.8600, lng: 108.3500, icon: iconAttraction, label: '行程景点' },
+
+    // Hotels
+    { type: 'hotel', name: 'Little Residence. A Boutique Hotel & Spa (Day 1-2)', addr: '📍 35 Đào Duy Từ, Cẩm Phô, Hội An · ☎ +84 235 3929 222', lat: 15.8793, lng: 108.3325, icon: iconHotel, label: '住宿区域' },
+    { type: 'hotel', name: 'Wink Hotel Danang Centre (Day 3-5)', addr: '178 Tran Phu, Phuoc Ninh, Hải Châu, Đà Nẵng', lat: 16.0638, lng: 108.2118, icon: iconHotel, label: '住宿区域' },
+    { type: 'hotel', name: 'Saigon Hotel (Day 6-8)', addr: '8 Dong Khoi St, Ben Nghe, District 1, HCMC', lat: 10.7745, lng: 106.7028, icon: iconHotel, label: '住宿区域' },
+
+    // Michelin Restaurants
+    { type: 'restaurant', name: 'La Maison 1888 ⭐一星', addr: 'InterContinental Danang, Bãi Bắc, Sơn Trà', lat: 16.1339, lng: 108.2944, icon: iconRestaurant, label: '米其林一星' },
+    { type: 'restaurant', name: 'Nén Danang 🌱绿色之星', addr: '16 My Da Tay 2, Ngũ Hành Sơn', lat: 16.0489, lng: 108.2856, icon: iconRestaurant, label: '绿色之星' },
+    { type: 'restaurant', name: 'Bún Chả Cá 109 🥇Bib', addr: '109 Nguyen Chi Thanh, Hải Châu', lat: 16.0686, lng: 108.2158, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Bé Mặn 🥇Bib', addr: 'Lot 9, Vo Nguyen Giap, Sơn Trà', lat: 16.0670, lng: 108.2510, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Quê Xưa 🥇Bib', addr: '1165-167 Nui Thanh, Hải Châu', lat: 16.0598, lng: 108.2102, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Bánh Xèo 76 🥇Bib', addr: '85A Le Van Huu, Ngũ Hành Sơn', lat: 16.0450, lng: 108.2670, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Bún Bò Huế Bà Thương 🥇Bib', addr: '23 Tran Quoc Toan, Hải Châu', lat: 16.0640, lng: 108.2160, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Shamballa 🥇Bib', addr: '277 Tran Hung Dao, Sơn Trà', lat: 16.0720, lng: 108.2320, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Bún Riêu Cua 39 🔵Selected', addr: '39 Le Hong Phong, Hải Châu', lat: 16.0655, lng: 108.2085, icon: iconRestaurant, label: '米其林推荐' },
+    { type: 'restaurant', name: 'Mộc 🔵Selected', addr: '26 To Hien Thanh, Sơn Trà', lat: 16.0630, lng: 108.2420, icon: iconRestaurant, label: '米其林推荐' },
+    { type: 'restaurant', name: 'Bếp Cuốn 🔵Selected', addr: '31-33 Tran Bach Dang, Sơn Trà', lat: 16.0620, lng: 108.2380, icon: iconRestaurant, label: '米其林推荐' },
+    { type: 'restaurant', name: 'Little Faifo 🔵Selected (会安)', addr: '66 Nguyen Thai Hoc, Hội An', lat: 15.8780, lng: 108.3380, icon: iconRestaurant, label: '米其林推荐' },
+    { type: 'restaurant', name: 'Chau Kitchen & Bar 🔵Selected (会安)', addr: '141 Tran Phu, Hội An', lat: 15.8785, lng: 108.3300, icon: iconRestaurant, label: '米其林推荐' },
+
+    // Motorbike Rental - Da Nang
+    { type: 'rental', name: 'Binh Minh Motorbike Rental', addr: '18 Phan Boi, An Hải, Sơn Trà · ☎ 0986 862 986', lat: 16.0630, lng: 108.2480, icon: iconRental, label: '租车店' },
+    { type: 'rental', name: 'Huu Vy Motorbike Rental', addr: '297 Chinh Huu, Sơn Trà · ☎ 0932 445 145', lat: 16.0610, lng: 108.2520, icon: iconRental, label: '租车店' },
+    { type: 'rental', name: 'Song Han Motorbike Rental', addr: '86/26 Thi Sach, Hải Châu · ☎ 0935 304 050', lat: 16.0620, lng: 108.2140, icon: iconRental, label: '租车店' },
+    { type: 'rental', name: 'Motorvina (岘港店)', addr: '11 An Thuong 19, Sơn Trà · ☎ 0835 115 599', lat: 16.0620, lng: 108.2470, icon: iconRental, label: '租车店' },
+    { type: 'rental', name: 'Andy Motorbike Rental', addr: '30 Le Thuoc, An Hải, Sơn Trà · ☎ 0935 888 028', lat: 16.0640, lng: 108.2500, icon: iconRental, label: '租车店' },
+    { type: 'rental', name: 'Thanh Cong Motorbike Rental', addr: '12 Pham Thieu, Thanh Khé · ☎ 0377 276 635', lat: 16.0580, lng: 108.2080, icon: iconRental, label: '租车店' },
+
+    // Motorbike Rental - Hoi An
+    { type: 'rental', name: 'Hoi An Bike Rental', addr: '14 Cua Dai, Hội An · ☎ 0961 172 420', lat: 15.8730, lng: 108.3420, icon: iconRental, label: '租车店' },
+    { type: 'rental', name: 'Mr. Hai Motorbike Rental', addr: '170 Ly Thai To, Hội An · ☎ 0784 840 489', lat: 15.8790, lng: 108.3360, icon: iconRental, label: '租车店' },
+    { type: 'rental', name: 'Hoi An Scooter Rental', addr: '38/3 Cua Dai, Hội An · ☎ 0935 640 064', lat: 15.8740, lng: 108.3400, icon: iconRental, label: '租车店' },
+    { type: 'rental', name: 'Motorvina (会安店)', addr: '439/28 Cua Dai, Hội An · ☎ 0848 005 599', lat: 15.8710, lng: 108.3450, icon: iconRental, label: '租车店' },
+
+    // ===== Ho Chi Minh City =====
+    // Airport
+    { type: 'airport', name: '胡志明新山一机场 (SGN T2)', addr: 'Trường Sơn, Tân Bình, TP.HCM', lat: 10.8188, lng: 106.6519, icon: iconAirport, label: '机场' },
+
+    // Attractions - HCMC
+    { type: 'attraction', name: '红教堂 (Notre-Dame Cathedral)', addr: '01 Cong Xa Paris, Ben Nghe, District 1', lat: 10.7790, lng: 106.6950, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '中央邮局 (Central Post Office)', addr: '02 Cong Xa Paris, Ben Nghe, District 1', lat: 10.7793, lng: 106.6955, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '西贡歌剧院 (Saigon Opera House)', addr: '07 Cong Truong Lam Son, Ben Nghe, District 1', lat: 10.7765, lng: 106.7030, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '战争遗迹博物馆 (War Remnants Museum)', addr: '28 Vo Van Tan, District 3', lat: 10.7725, lng: 106.6958, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '统一宫 (Reunification Palace)', addr: '135 Nam Ky Khoi Nghia, Ben Nghe, District 1', lat: 10.7768, lng: 106.6920, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '滨城市场 (Ben Thanh Market)', addr: 'Le Loi Blvd, Ben Thanh, District 1', lat: 10.7720, lng: 106.6980, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '粉红教堂 (Tan Dinh Church)', addr: '289 Hai Ba Trung, Ward 8, District 3', lat: 10.7895, lng: 106.6975, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '咖啡公寓 (42 Nguyen Hue)', addr: '42 Nguyen Hue, Ben Nghe, District 1', lat: 10.7735, lng: 106.7025, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: 'Bitexco 金融塔观景台', addr: '36 Ho Tung Mau, Ben Nghe, District 1', lat: 10.7715, lng: 106.7020, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '西贡河 (Saigon River)', addr: 'Bach Dang Wharf, District 1', lat: 10.7750, lng: 106.7100, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '湄公河三角洲 · 美拖 (My Tho)', addr: 'My Tho, Tien Giang Province（距胡志明70km）', lat: 10.3600, lng: 106.3600, icon: iconAttraction, label: '行程景点' },
+    { type: 'attraction', name: '古芝地道 (Cu Chi Tunnels)', addr: 'Phu Hiep, Cu Chi, TP.HCM（距市区40km）', lat: 11.0660, lng: 106.5380, icon: iconAttraction, label: '行程景点' },
+
+    // Michelin Restaurants - HCMC
+    { type: 'restaurant', name: 'Ănăn Saigon ⭐一星', addr: '89 Ton That Dam, Ben Nghe, District 1', lat: 10.7740, lng: 106.7015, icon: iconRestaurant, label: '米其林一星' },
+    { type: 'restaurant', name: 'CieL ⭐一星·新增2025', addr: '50 6/3 Street, Thao Dien, Thu Duc City', lat: 10.8050, lng: 106.7380, icon: iconRestaurant, label: '米其林一星' },
+    { type: 'restaurant', name: 'Coco Dining ⭐一星', addr: '27 Ly Tu Trong, Ben Nghe, District 1', lat: 10.7780, lng: 106.7010, icon: iconRestaurant, label: '米其林一星' },
+    { type: 'restaurant', name: 'Cơm Tấm Ba Ghiền 🥇Bib', addr: '84 Dang Van Ngu, Ward 10, Phu Nhuan', lat: 10.7960, lng: 106.6890, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Bánh Xèo 46A 🥇Bib', addr: '46A Dinh Cong Trang, Tan Dinh, District 1', lat: 10.7890, lng: 106.6985, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Cục Gạch Quán 🥇Bib', addr: '10 Dang Tat, Tan Dinh, District 1', lat: 10.7905, lng: 106.6990, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Phở Lệ 🥇Bib', addr: '413-415 Nguyen Trai, Ward 7, District 5', lat: 10.7450, lng: 106.6650, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Phở Miến Gà Kỳ Đồng 🥇Bib', addr: '4/5Bis Ky Dong, Ward 9, District 3', lat: 10.7690, lng: 106.6900, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Bún Bò Huế 14B 🥇Bib', addr: '14B Street 46, Ward 2, District 4', lat: 10.7580, lng: 106.7020, icon: iconRestaurant, label: '必比登' },
+    { type: 'restaurant', name: 'Bò Kho Gánh 🔵Selected', addr: 'Lot H/029 Su Van Hanh, Ward 2, District 10', lat: 10.7620, lng: 106.6700, icon: iconRestaurant, label: '米其林推荐' },
+    { type: 'restaurant', name: 'Mặn Mòi 🔵Selected·新增2025', addr: '34 Vo Van Tan, Ward 6, District 3', lat: 10.7700, lng: 106.6930, icon: iconRestaurant, label: '米其林推荐' },
+    { type: 'restaurant', name: 'The Monkey Gallery Dining 🔵Selected', addr: '3F, 91 Mac Thi Buoi, District 1', lat: 10.7730, lng: 106.7035, icon: iconRestaurant, label: '米其林推荐' }
+  ];
+
+  var markers = [];
+  locations.forEach(function(loc) {
+    var m = L.marker([loc.lat, loc.lng], { icon: loc.icon }).addTo(map);
+    m.bindPopup(popup(loc.name, loc.addr, loc.label, loc.icon.options.html.match(/background:(#[0-9a-f]+);/)[1], loc.lat, loc.lng));
+    markers.push({ marker: m, type: loc.type });
+  });
+
+  // Legend filter
+  var visible = { attraction: true, restaurant: true, rental: true, hotel: true, airport: true };
+  var colorMap = { attraction: '#e85d3d', restaurant: '#a32d2d', rental: '#2563eb', hotel: '#7c3aed', airport: '#0f6e56' };
+  document.querySelectorAll('.map-legend-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      var t = this.dataset.type;
+      visible[t] = !visible[t];
+      this.style.opacity = visible[t] ? '1' : '0.35';
+      markers.forEach(function(mk) {
+        if (mk.type === t) {
+          if (visible[t]) { map.addLayer(mk.marker); }
+          else { map.removeLayer(mk.marker); }
+        }
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
